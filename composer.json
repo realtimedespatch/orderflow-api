@@ -1,0 +1,23 @@
+{
+    "name": "sixbysix/realtime-despatch",
+    "type": "library",
+    "license":"OSL-3.0",    
+    "description": "Real Time Despatch API Integration Library",
+    "authors": [
+        {
+            "name": "SixBySix",
+            "email": "support@thesixbysix.co.uk"
+        }
+    ],
+    "require": {
+        "kriswallsmith/buzz": "*"
+    },
+    "config": {
+        "bin-dir": "../bin/"
+    },    
+    "autoload": {
+        "psr-4": {
+            "SixBySix\\RealtimeDespatch\\": "src/"
+        }
+    }
+}
