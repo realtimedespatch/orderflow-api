@@ -3,14 +3,14 @@
 namespace SixBySix\RealtimeDespatch\Gateway;
 
 use Buzz\Browser as HttpClient;
-use Buzz\Listener\ListenerInterface as BuzzListenerInterface;
-use Buzz\Message\MessageInterface;
-use Buzz\Message\RequestInterface;
+use Buzz\Middleware\MiddlewareInterface as MiddlewareInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Default Gateway.
  */
-class DefaultGateway implements BuzzListenerInterface
+class DefaultGateway implements MiddlewareInterface
 {
     const API_ENDPOINT_INVENTORY_RETRIEVAL = 'remotewarehouse/inventory.xml';
     const API_ENDPOINT_PRODUCT_IMPORT = 'remotewarehouse/imports/importitems.xml';
@@ -24,7 +24,7 @@ class DefaultGateway implements BuzzListenerInterface
     /**
      * Api Client.
      *
-     * @var \GuzzleHttp\Client
+     * @var \Buzz\Browser
      */
     protected $_client;
 
@@ -59,7 +59,9 @@ class DefaultGateway implements BuzzListenerInterface
     /**
      * Constructor
      *
-     * @param \GuzzleHttp\Client $client
+     * @param \Buzz\Browser $client
+     * @param string $baseUrl
+     * @param array $options
      */
     public function __construct(HttpClient $client, $baseUrl, $options = array())
     {
@@ -67,33 +69,35 @@ class DefaultGateway implements BuzzListenerInterface
         $this->_baseUrl = $baseUrl;
         $this->_options = $options;
 
-        $this->_client->addListener($this);
+        $this->_client->addMiddleware($this);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function preSend(RequestInterface $request)
+    public function handleRequest(RequestInterface $request, callable $next)
     {
         $this->_lastRequest = null;
 
-        try
-        {
-            $this->_lastRequest = new \SimpleXMLElement($request->getContent());
+        try {
+            $this->_lastRequest = new \SimpleXMLElement($request->getBody());
         }
-        catch (\Exception $ex)
-        {
-            $this->_lastRequest = $request;
+        catch (\Exception $ex) {
+            $this->_lastRequest = $next($request);
             return;
         }
+
+        return $next($request);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function postSend(RequestInterface $request, MessageInterface $response)
+    public function handleResponse(RequestInterface $request, ResponseInterface $response, callable $next)
     {
-        $this->_lastResponse = new \SimpleXMLElement($response->getContent());
+        $this->_lastResponse = new \SimpleXMLElement($response->getBody());
+
+        return $next($request, $response);
     }
 
     /**

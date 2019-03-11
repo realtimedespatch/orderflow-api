@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "kriswallsmith/buzz": "*"
+        "kriswallsmith/buzz": "0.16.1",
+        "php": "^5.4 || ^7.0"
     },
     "config": {
         "bin-dir": "../bin/"

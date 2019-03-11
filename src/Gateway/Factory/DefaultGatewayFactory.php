@@ -4,11 +4,11 @@ namespace SixBySix\RealtimeDespatch\Gateway\Factory;
 
 use SixBySix\RealtimeDespatch\Api\Credentials;
 use SixBySix\RealtimeDespatch\Gateway\DefaultGateway;
-use SixBySix\RealtimeDespatch\Listener\ExceptionListener;
+use SixBySix\RealtimeDespatch\Middleware\ExceptionMiddleware;
 
 use Buzz\Browser as HttpClient;
 use Buzz\Client\Curl as HttpCurlAdapter;
-use Buzz\Listener\BasicAuthListener as BasicAuthListener;
+use Buzz\Middleware\BasicAuthMiddleware as BasicAuthMiddleware;
 
 /**
  * Default Gateway Factory.
@@ -30,14 +30,14 @@ class DefaultGatewayFactory
 
         $client = new HttpClient($adapter);
 
-        $client->addListener(
-            new BasicAuthListener(
+        $client->addMiddleware(
+            new BasicAuthMiddleware(
                 $credentials->getUsername(),
                 $credentials->getPassword()
             )
         );
 
-        $client->addListener(new ExceptionListener);
+        $client->addMiddleware(new ExceptionMiddleware);
 
         $params = array(
             'query' => array(
