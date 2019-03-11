@@ -15,7 +15,7 @@ class ReturnService extends AbstractService
      *
      * @param \SixBySix\RealtimeDespatch\Entity\RMA $return
      *
-     * @return SixBySix\RealtimeDespatch\Report
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
      */
     public function importReturn(RMA $return)
     {
@@ -30,7 +30,7 @@ class ReturnService extends AbstractService
      *
      * @param \SixBySix\RealtimeDespatch\Entity\RMACollection $returns
      *
-     * @return SixBySix\RealtimeDespatch\Report
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
      */
     public function importReturns(RMACollection $returns)
     {

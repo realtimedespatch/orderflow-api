@@ -25,7 +25,7 @@ class ImportReturnsDocBuilderType extends DocBuilderType
     /**
      * Builds an individual import line.
      *
-     * @param SixBySix\RealtimeDespatch\Entity\RMA $return
+     * @param \SixBySix\RealtimeDespatch\Entity\RMA $return
      *
      * @return void
      */

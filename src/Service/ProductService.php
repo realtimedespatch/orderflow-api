@@ -51,7 +51,7 @@ class ProductService extends AbstractService
      *
      * @param \SixBySix\RealtimeDespatch\Entity\Product $product
      *
-     * @return SixBySix\RealtimeDespatch\Report
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
      */
     public function updateProduct(Product $product)
     {
@@ -66,7 +66,7 @@ class ProductService extends AbstractService
      *
      * @param \SixBySix\RealtimeDespatch\Entity\ProductCollection $products
      *
-     * @return SixBySix\RealtimeDespatch\Report
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
      */
     public function updateProducts(ProductCollection $products)
     {
@@ -82,7 +82,7 @@ class ProductService extends AbstractService
      *
      * @param \SixBySix\RealtimeDespatch\Entity\Product $product
      *
-     * @return SixBySix\RealtimeDespatch\Report
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
      */
     public function importProduct(Product $product)
     {
@@ -97,7 +97,7 @@ class ProductService extends AbstractService
      *
      * @param \SixBySix\RealtimeDespatch\Entity\ProductCollection $products
      *
-     * @return SixBySix\RealtimeDespatch\Report
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
      */
     public function importProducts(ProductCollection $products)
     {
@@ -113,7 +113,7 @@ class ProductService extends AbstractService
      *
      * @param \SixBySix\RealtimeDespatch\Entity\Product $product
      *
-     * @return SixBySix\RealtimeDespatch\Report
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
      */
     public function mergeProduct(Product $product)
     {
@@ -128,7 +128,7 @@ class ProductService extends AbstractService
      *
      * @param \SixBySix\RealtimeDespatch\Entity\ProductCollection $products
      *
-     * @return SixBySix\RealtimeDespatch\Report
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
      */
     public function mergeProducts(ProductCollection $products)
     {

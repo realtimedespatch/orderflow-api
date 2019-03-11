@@ -25,7 +25,7 @@ class MergeProductsDocBuilderType extends DocBuilderType
     /**
      * Builds the individual import lines.
      *
-     * @param SixBySix\RealtimeDespatch\Entity $product
+     * @param \SixBySix\RealtimeDespatch\Entity\Product $product
      *
      * @return void
      */

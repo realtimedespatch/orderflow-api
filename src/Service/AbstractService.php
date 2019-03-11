@@ -46,8 +46,6 @@ abstract class AbstractService
      /**
       * Returns the current document builder.
       *
-      * @todo dependency inject
-      *
       * @return \SixBySix\RealtimeDespatch\Service\DocFactory
       */
      protected function _getDocumentBuilder()

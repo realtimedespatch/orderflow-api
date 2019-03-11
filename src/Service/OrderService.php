@@ -5,8 +5,6 @@ namespace SixBySix\RealtimeDespatch\Service;
 use SixBySix\RealtimeDespatch\Entity\Order;
 use SixBySix\RealtimeDespatch\Entity\OrderCollection;
 
-use \SixBySix\RealtimeDespatch\Exception\Order\OrderCancellationException as OrderCancellationException;
-
 /**
  * Order Service.
  */
@@ -65,7 +63,7 @@ class OrderService extends AbstractService
      *
      * @param \SixBySix\RealtimeDespatch\Entity\Order $order
      *
-     * @return SixBySix\RealtimeDespatch\Report
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
      */
     public function importOrder(Order $order)
     {
@@ -80,7 +78,7 @@ class OrderService extends AbstractService
      *
      * @param \SixBySix\RealtimeDespatch\Entity\OrderCollection $orders
      *
-     * @return SixBySix\RealtimeDespatch\Report
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
      */
     public function importOrders(OrderCollection $orders)
     {

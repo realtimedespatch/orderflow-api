@@ -10,14 +10,14 @@ class DocBuilder
    /**
     * Doc Builder Type
     *
-    * @var SixBySix\RealtimeDespatch\Document\DocBuilderType
+    * @var \SixBySix\RealtimeDespatch\Document\DocBuilderType
     */
     protected $_type;
 
     /**
      * Constructor.
      *
-     * @param SixBySix\RealtimeDespatch\Document\DocBuilderType $type
+     * @param \SixBySix\RealtimeDespatch\Document\DocBuilderType $type
      */
     public function __construct(DocBuilderType $type)
     {

@@ -25,7 +25,7 @@ class ImportOrdersDocBuilderType extends DocBuilderType
     /**
      * Builds an individual import line.
      *
-     * @param SixBySix\RealtimeDespatch\Entity\Order $order
+     * @param \SixBySix\RealtimeDespatch\Entity\Order $order
      *
      * @return void
      */
@@ -115,7 +115,7 @@ class ImportOrdersDocBuilderType extends DocBuilderType
     /**
      * Builds an order address
      *
-     * @param SixBySix\RealtimeDespatch\Entity\Shipment $address
+     * @param \SixBySix\RealtimeDespatch\Entity\Shipment $address
      *
      * @return string
      */
