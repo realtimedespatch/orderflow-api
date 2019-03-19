@@ -10,6 +10,8 @@ use Buzz\Browser as HttpClient;
 use Buzz\Client\Curl as HttpCurlAdapter;
 use Buzz\Middleware\BasicAuthMiddleware as BasicAuthMiddleware;
 
+use Nyholm\Psr7\Factory\Psr17Factory;
+
 /**
  * Default Gateway Factory.
  */
@@ -24,11 +26,12 @@ class DefaultGatewayFactory
      */
     public function create(Credentials $credentials)
     {
-        $adapter = new HttpCurlAdapter();
-        $adapter->setOption(CURLOPT_SSL_VERIFYPEER, false);
-        $adapter->setOption(CURLOPT_TIMEOUT, 300);
+        $adapter = new HttpCurlAdapter(
+            new Psr17Factory(),
+            ['verify'  => false, 'timeout' => 300]
+        );
 
-        $client = new HttpClient($adapter);
+        $client = new HttpClient($adapter, new Psr17Factory());
 
         $client->addMiddleware(
             new BasicAuthMiddleware(
