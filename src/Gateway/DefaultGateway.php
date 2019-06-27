@@ -230,7 +230,7 @@ class DefaultGateway implements MiddlewareInterface
      */
     public function retrieveOrderDetails($externalReference)
     {
-        $this->_client->post(
+        $this->_client->get(
             $this->_createUrl(
                 self::API_ENDPOINT_ORDER_DETAIL,
                 array('query' => array('externalReference' => $externalReference))
