@@ -157,20 +157,27 @@ class DefaultGateway implements MiddlewareInterface
      *
      * @param string $incrementId Order Increment ID
      * @param string $type        Notification Type
+     * @param int $entityId       Order Entity ID
      *
      * @return \SimpleXMLElement
      */
-    public function orderNotification($incrementId, $type)
+    public function orderNotification($incrementId, $type, $entityId = null)
     {
+        $query = [
+            'thirdPartyReference' => $incrementId,
+            'event' => 'order.'.$type,
+            'action' => $type
+        ];
+
+        if ($entityId) {
+            $query['entityReference'] = $entityId;
+        }
+
         $this->_client->post(
             $this->_createUrl(
                 self::API_ENDPOINT_ORDER_UPDATE,
                 array(
-                    'query' => array(
-                        'thirdPartyReference' => $incrementId,
-                        'event' => 'order.'.$type,
-                        'action' => $type
-                    )
+                    'query' => $query
                 )
             )
         );
