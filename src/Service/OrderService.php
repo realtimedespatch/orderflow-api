@@ -13,14 +13,14 @@ class OrderService extends AbstractService
     /**
      * Notifies OrderFlow of a new order.
      *
-     * @param string $incrementId
-     * @param int $entityId
+     * @param string $orderId
+     * @param string $altOrderId
      *
      * @return \SimpleXMLElement
      */
-    public function notifyOrderCreation($incrementId, $entityId = null)
+    public function notifyOrderCreation($orderId, $altOrderId = null)
     {
-        $response = $this->_gateway->orderNotification($incrementId, 'created', $entityId);
+        $response = $this->_gateway->orderNotification($orderId, 'created', $altOrderId);
 
         if (strstr($response->__toString(), "Result 'no_operation' for order")) {
             throw new \Exception($response->__toString());
