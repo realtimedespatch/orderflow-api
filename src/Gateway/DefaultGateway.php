@@ -155,22 +155,22 @@ class DefaultGateway implements MiddlewareInterface
     /**
      * Order Notification.
      *
-     * @param string $incrementId Order Increment ID
+     * @param string $orderId     Primary order ID (typically increment_id)
      * @param string $type        Notification Type
-     * @param int $entityId       Order Entity ID
+     * @param string $altOrderId  Alternative order ID
      *
      * @return \SimpleXMLElement
      */
-    public function orderNotification($incrementId, $type, $entityId = null)
+    public function orderNotification($orderId, $type, $altOrderId = null)
     {
         $query = [
-            'thirdPartyReference' => $incrementId,
+            'thirdPartyReference' => $orderId,
             'event' => 'order.'.$type,
             'action' => $type
         ];
 
-        if ($entityId) {
-            $query['entityReference'] = $entityId;
+        if ($altOrderId) {
+            $query['externalReference'] = $altOrderId;
         }
 
         $this->_client->post(
