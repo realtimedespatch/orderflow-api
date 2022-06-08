@@ -64,9 +64,9 @@ class InventoryLine extends AbstractEntity
      *
      * @param string $externalReference
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\InventoryLine
+     * @return InventoryLine
      */
-    public function setExternalReference($externalReference)
+    public function setExternalReference(string $externalReference)
     {
         $this->_externalReference = $externalReference;
 
@@ -88,9 +88,9 @@ class InventoryLine extends AbstractEntity
      *
      * @param string $site
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\InventoryLine
+     * @return InventoryLine
      */
-    public function setSite($site)
+    public function setSite(string $site)
     {
         $this->_site = $site;
 
@@ -112,9 +112,9 @@ class InventoryLine extends AbstractEntity
      *
      * @param integer $total
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\InventoryLine
+     * @return InventoryLine
      */
-    public function setTotal($total)
+    public function setTotal(int $total)
     {
         $this->_total = $total;
 
@@ -136,9 +136,9 @@ class InventoryLine extends AbstractEntity
      *
      * @param integer $allocated
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\InventoryLine
+     * @return InventoryLine
      */
-    public function setAllocated($allocated)
+    public function setAllocated(int $allocated)
     {
         $this->_allocated = $allocated;
 
@@ -160,9 +160,9 @@ class InventoryLine extends AbstractEntity
      *
      * @param boolean $isAvailable
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\InventoryLine
+     * @return InventoryLine
      */
-    public function setIsAvailable($isAvailable)
+    public function setIsAvailable(bool $isAvailable)
     {
         $this->_isAvailable = (boolean) $isAvailable;
 
@@ -184,7 +184,7 @@ class InventoryLine extends AbstractEntity
      *
      * @param boolean $isAvailable
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\InventoryLine
+     * @return InventoryLine
      */
     public function setIsFrozen($isFrozen)
     {

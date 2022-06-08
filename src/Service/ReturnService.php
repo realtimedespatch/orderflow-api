@@ -4,6 +4,7 @@ namespace SixBySix\RealtimeDespatch\Service;
 
 use SixBySix\RealtimeDespatch\Entity\RMA;
 use SixBySix\RealtimeDespatch\Entity\RMACollection;
+use SixBySix\RealtimeDespatch\Report\ImportReport;
 
 /**
  * Return Service.
@@ -13,9 +14,9 @@ class ReturnService extends AbstractService
     /**
      * Imports a single return.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\RMA $return
+     * @param RMA $return
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
+     * @return ImportReport
      */
     public function importReturn(RMA $return)
     {
@@ -28,9 +29,9 @@ class ReturnService extends AbstractService
     /**
      * Imports a collection of returns.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\RMACollection $returns
+     * @param RMACollection $returns
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReportFactor
      */
     public function importReturns(RMACollection $returns)
     {

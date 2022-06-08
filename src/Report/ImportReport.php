@@ -10,7 +10,7 @@ class ImportReport
     /**
      * Lines.
      *
-     * @var \SixBySix\RealtimeDespatch\Report\ImportReportLine $lines
+     * @var ImportReportLine $lines
      */
     protected $_lines;
 
@@ -35,7 +35,7 @@ class ImportReport
     /**
      * Adds a new line to the report.
      *
-     * @param \SixBySix\RealtimeDespatch\Report\ImportReportLine $line
+     * @param ImportReportLine $line
      *
      * @return ImportReport
      */

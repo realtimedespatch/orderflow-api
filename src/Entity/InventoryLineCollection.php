@@ -2,10 +2,12 @@
 
 namespace SixBySix\RealtimeDespatch\Entity;
 
+use ArrayObject;
+
 /**
  * Inventory Line Collection.
  */
-class InventoryLineCollection extends \ArrayObject
+class InventoryLineCollection extends ArrayObject
 {
 
 }

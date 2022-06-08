@@ -2,8 +2,11 @@
 
 namespace SixBySix\RealtimeDespatch\Service;
 
+use Exception;
+use SimpleXMLElement;
 use SixBySix\RealtimeDespatch\Entity\Product;
 use SixBySix\RealtimeDespatch\Entity\ProductCollection;
+use SixBySix\RealtimeDespatch\Report\ImportReport;
 
 /**
  * Product Service.
@@ -15,14 +18,17 @@ class ProductService extends AbstractService
      *
      * @param string $sku
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
+     * @throws Exception
+     * @throws Exception
+     * @throws Exception
      */
-    public function notifyProductCreation($sku)
+    public function notifyProductCreation(string $sku)
     {
         $response = $this->_gateway->productNotification($sku, 'created');
 
-        if (strstr($response->__toString(), "Result 'no_operation' for product")) {
-            throw new \Exception($response->__toString());
+        if (str_contains($response->__toString(), "Result 'no_operation' for product")) {
+            throw new Exception($response->__toString());
         }
 
         return $response;
@@ -33,14 +39,17 @@ class ProductService extends AbstractService
      *
      * @param string $sku
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
+     * @throws Exception
+     * @throws Exception
+     * @throws Exception
      */
-    public function notifyProductUpdate($sku)
+    public function notifyProductUpdate(string $sku)
     {
         $response = $this->_gateway->productNotification($sku, 'modified');
 
-        if (strstr($response->__toString(), "Result 'no_operation' for product")) {
-            throw new \Exception($response->__toString());
+        if (str_contains($response->__toString(), "Result 'no_operation' for product")) {
+            throw new Exception($response->__toString());
         }
 
         return $response;
@@ -49,9 +58,9 @@ class ProductService extends AbstractService
     /**
      * Updates a single existing product with RTD.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\Product $product
+     * @param Product $product
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
+     * @return ImportReport
      */
     public function updateProduct(Product $product)
     {
@@ -64,9 +73,9 @@ class ProductService extends AbstractService
     /**
      * Updates a collection of products with RTD.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\ProductCollection $products
+     * @param ProductCollection $products
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReportFactor
      */
     public function updateProducts(ProductCollection $products)
     {
@@ -80,9 +89,9 @@ class ProductService extends AbstractService
     /**
      * Imports a single product to RTD.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\Product $product
+     * @param Product $product
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
+     * @return ImportReport
      */
     public function importProduct(Product $product)
     {
@@ -95,9 +104,9 @@ class ProductService extends AbstractService
     /**
      * Imports a collection of products to RTD.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\ProductCollection $products
+     * @param ProductCollection $products
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReportFactor
      */
     public function importProducts(ProductCollection $products)
     {
@@ -111,9 +120,9 @@ class ProductService extends AbstractService
     /**
      * Merges a single product.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\Product $product
+     * @param Product $product
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
+     * @return ImportReport
      */
     public function mergeProduct(Product $product)
     {
@@ -126,9 +135,9 @@ class ProductService extends AbstractService
     /**
      * Merges a collection of products to RTD.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\ProductCollection $products
+     * @param ProductCollection $products
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReportFactor
      */
     public function mergeProducts(ProductCollection $products)
     {

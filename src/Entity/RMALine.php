@@ -45,11 +45,11 @@ class RMALine extends AbstractEntity
     /**
      * Quantity Getter.
      *
-     * @return string
+     * @return int
      */
     public function getQuantity()
     {
-        return (integer) $this->_quantity;
+        return $this->_quantity;
     }
 
     /**
@@ -57,9 +57,9 @@ class RMALine extends AbstractEntity
      *
      * @param integer $quantity
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMALine
+     * @return RMALine
      */
-    public function setQuantity($quantity)
+    public function setQuantity(int $quantity)
     {
         $this->_quantity = $quantity;
 
@@ -69,7 +69,7 @@ class RMALine extends AbstractEntity
     /**
      * Reason Getter.
      *
-     * @return string
+     * @return int
      */
     public function getReason()
     {
@@ -81,9 +81,9 @@ class RMALine extends AbstractEntity
      *
      * @param string $reason
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMALine
+     * @return RMALine
      */
-    public function setReason($reason)
+    public function setReason(string $reason)
     {
         $this->_reason = $reason;
 
@@ -93,7 +93,7 @@ class RMALine extends AbstractEntity
     /**
      * Condition Getter.
      *
-     * @return string
+     * @return int
      */
     public function getCondition()
     {
@@ -105,9 +105,9 @@ class RMALine extends AbstractEntity
      *
      * @param string $condition
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMALine
+     * @return RMALine
      */
-    public function setCondition($condition)
+    public function setCondition(string $condition)
     {
         $this->_condition = $condition;
 
@@ -117,7 +117,7 @@ class RMALine extends AbstractEntity
     /**
      * Product Getter.
      *
-     * @return string
+     * @return int
      */
     public function getProduct()
     {
@@ -129,9 +129,9 @@ class RMALine extends AbstractEntity
      *
      * @param string $product
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMALine
+     * @return RMALine
      */
-    public function setProduct($product)
+    public function setProduct(string $product)
     {
         $this->_product = $product;
 

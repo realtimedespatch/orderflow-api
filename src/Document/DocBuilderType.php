@@ -2,6 +2,8 @@
 
 namespace SixBySix\RealtimeDespatch\Document;
 
+use DOMDocument;
+
 /**
  * Doc Builder Type.
  */
@@ -27,7 +29,7 @@ abstract class DocBuilderType
     /**
      * Builds the request body as a dom document.
      *
-     * @return \DOMDocument
+     * @return DOMDocument
      */
     public abstract function build();
 }

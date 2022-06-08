@@ -66,7 +66,7 @@ class Shipment extends AbstractEntity
     /**
      * Shipment Address.
      *
-     * @var \SixBySix\RealtimeDespatch\Entity\ShipmentAddress
+     * @var ShipmentAddress
      */
     protected $_address;
 
@@ -193,7 +193,7 @@ class Shipment extends AbstractEntity
      */
     public function getWeight()
     {
-        return (float) $this->_weight;
+        return $this->_weight;
     }
 
     /**
@@ -209,7 +209,7 @@ class Shipment extends AbstractEntity
     /**
      * Shipment Address Getter.
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\ShipmentAddress
+     * @return ShipmentAddress
      */
     public function getAddress()
     {
@@ -291,9 +291,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $externalReference
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setExternalReference($externalReference)
+    public function setExternalReference(string $externalReference)
     {
         $this->_externalReference = $externalReference;
 
@@ -305,9 +305,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $state
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setState($state)
+    public function setState(string $state)
     {
         $this->_state = $state;
 
@@ -319,9 +319,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $earliestShipDate
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setEarliestShipDate($earliestShipDate)
+    public function setEarliestShipDate(string $earliestShipDate)
     {
         $this->_earliestShipDate = $earliestShipDate;
 
@@ -333,9 +333,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $site
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setSite($site)
+    public function setSite(string $site)
     {
         $this->_site = $site;
 
@@ -347,9 +347,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $priority
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setPriority($priority)
+    public function setPriority(string $priority)
     {
         $this->_priority = $priority;
 
@@ -361,9 +361,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $priorityName
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setPriorityName($priorityName)
+    public function setPriorityName(string $priorityName)
     {
         $this->_priorityName = $priorityName;
 
@@ -375,9 +375,9 @@ class Shipment extends AbstractEntity
      *
      * @param float $weight
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setWeight($weight)
+    public function setWeight(float $weight)
     {
         $this->_weight = (float) $weight;
 
@@ -389,9 +389,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $weightUnits
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setWeightUnits($weightUnits)
+    public function setWeightUnits(string $weightUnits)
     {
         $this->_weightUnits = $weightUnits;
 
@@ -401,11 +401,11 @@ class Shipment extends AbstractEntity
     /**
      * Address Setter.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\ShipmentAddress $address
+     * @param ShipmentAddress $address
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setAddress(\SixBySix\RealtimeDespatch\Entity\ShipmentAddress $address)
+    public function setAddress(ShipmentAddress $address)
     {
         $this->_address = $address;
 
@@ -417,9 +417,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $courier
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setCourier($courier)
+    public function setCourier(string $courier)
     {
         $this->_courier = $courier;
 
@@ -431,9 +431,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $deliverySuggestionCode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setDeliverySuggestionCode($deliverySuggestionCode)
+    public function setDeliverySuggestionCode(string $deliverySuggestionCode)
     {
         $this->_deliverySuggestionCode = $deliverySuggestionCode;
 
@@ -445,9 +445,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $deliverySuggestionName
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setDeliverySuggestionName($deliverySuggestionName)
+    public function setDeliverySuggestionName(string $deliverySuggestionName)
     {
         $this->_deliverySuggestionName = $deliverySuggestionName;
 
@@ -459,9 +459,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $pickingMode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setPickingMode($pickingMode)
+    public function setPickingMode(string $pickingMode)
     {
         $this->_pickingMode = $pickingMode;
 
@@ -473,9 +473,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $despatchComment
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setDespatchComment($despatchComment)
+    public function setDespatchComment(string $despatchComment)
     {
         $this->_despatchComment = $despatchComment;
 
@@ -487,9 +487,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $despatchReference
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setDespatchReference($despatchReference)
+    public function setDespatchReference(string $despatchReference)
     {
         $this->_despatchReference = $despatchReference;
 
@@ -501,9 +501,9 @@ class Shipment extends AbstractEntity
      *
      * @param string $deliveryInstruction
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @return Shipment
      */
-    public function setDeliveryInstruction($deliveryInstruction)
+    public function setDeliveryInstruction(string $deliveryInstruction)
     {
         $this->_deliveryInstruction = $deliveryInstruction;
 

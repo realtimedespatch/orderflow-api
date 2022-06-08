@@ -47,7 +47,7 @@ class Credentials
      *
      * @param string $endpoint
      */
-    public function setEndpoint($endpoint)
+    public function setEndpoint(string $endpoint)
     {
         $this->_endpoint = $endpoint;
     }
@@ -67,7 +67,7 @@ class Credentials
      *
      * @param string $channel
      */
-    public function setChannel($channel)
+    public function setChannel(string $channel)
     {
         $this->_channel = $channel;
     }
@@ -87,7 +87,7 @@ class Credentials
      *
      * @param string $organisation
      */
-    public function setOrganisation($organisation)
+    public function setOrganisation(string $organisation)
     {
         $this->_organisation = $organisation;
     }
@@ -107,7 +107,7 @@ class Credentials
      *
      * @param string $username
      */
-    public function setUsername($username)
+    public function setUsername(string $username)
     {
         $this->_username = $username;
     }
@@ -127,7 +127,7 @@ class Credentials
      *
      * @param string $password
      */
-    public function setPassword($password)
+    public function setPassword(string $password)
     {
         $this->_password = $password;
     }

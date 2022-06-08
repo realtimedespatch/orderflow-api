@@ -2,8 +2,11 @@
 
 namespace SixBySix\RealtimeDespatch\Service;
 
+use Exception;
+use SimpleXMLElement;
 use SixBySix\RealtimeDespatch\Entity\Order;
 use SixBySix\RealtimeDespatch\Entity\OrderCollection;
+use SixBySix\RealtimeDespatch\Report\ImportReport;
 
 /**
  * Order Service.
@@ -14,16 +17,19 @@ class OrderService extends AbstractService
      * Notifies OrderFlow of a new order.
      *
      * @param string $orderId
-     * @param string $altOrderId
+     * @param string|null $altOrderId
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
+     * @throws Exception
+     * @throws Exception
+     * @throws Exception
      */
-    public function notifyOrderCreation($orderId, $altOrderId = null)
+    public function notifyOrderCreation(string $orderId, string $altOrderId = null)
     {
         $response = $this->_gateway->orderNotification($orderId, 'created', $altOrderId);
 
-        if (strstr($response->__toString(), "Result 'no_operation' for order")) {
-            throw new \Exception($response->__toString());
+        if (str_contains($response->__toString(), "Result 'no_operation' for order")) {
+            throw new Exception($response->__toString());
         }
 
         return $response;
@@ -32,16 +38,19 @@ class OrderService extends AbstractService
     /**
      * Cancels a single order.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\Order $order
+     * @param Order $order
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
+     * @throws Exception
+     * @throws Exception
+     * @throws Exception
      */
     public function cancelOrder(Order $order)
     {
         $response = $this->_gateway->cancelOrder($order->getExternalReference());
 
-        if (strstr($response->__toString(), "No cancel operation performed")) {
-            throw new \Exception($response->__toString());
+        if (str_contains($response->__toString(), "No cancel operation performed")) {
+            throw new Exception($response->__toString());
         }
 
         return $response;
@@ -50,9 +59,9 @@ class OrderService extends AbstractService
     /**
      * Retrieves the details for an order.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\Order $order
+     * @param Order $order
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
     public function retrieveOrderDetails(Order $order)
     {
@@ -62,9 +71,9 @@ class OrderService extends AbstractService
     /**
      * Imports a single order.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\Order $order
+     * @param Order $order
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
+     * @return ImportReport
      */
     public function importOrder(Order $order)
     {
@@ -77,9 +86,9 @@ class OrderService extends AbstractService
     /**
      * Imports a collection of orders.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\OrderCollection $orders
+     * @param OrderCollection $orders
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
+     * @return \SixBySix\RealtimeDespatch\Report\ImportReportFactor
      */
     public function importOrders(OrderCollection $orders)
     {

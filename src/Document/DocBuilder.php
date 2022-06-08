@@ -2,6 +2,8 @@
 
 namespace SixBySix\RealtimeDespatch\Document;
 
+use DOMDocument;
+
 /**
  * Doc Builder.
  */
@@ -10,14 +12,14 @@ class DocBuilder
    /**
     * Doc Builder Type
     *
-    * @var \SixBySix\RealtimeDespatch\Document\DocBuilderType
+    * @var DocBuilderType
     */
     protected $_type;
 
     /**
      * Constructor.
      *
-     * @param \SixBySix\RealtimeDespatch\Document\DocBuilderType $type
+     * @param DocBuilderType $type
      */
     public function __construct(DocBuilderType $type)
     {
@@ -27,7 +29,7 @@ class DocBuilder
     /**
      * Builds the request body as a dom document.
      *
-     * @return \DOMDocument
+     * @return DOMDocument
      */
     public function build()
     {

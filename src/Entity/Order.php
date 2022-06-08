@@ -178,30 +178,30 @@ class Order extends AbstractEntity
     /**
      * Delivery Address.
      *
-     * @var \SixBySix\RealtimeDespatch\Entity\DeliveryAddress
+     * @var DeliveryAddress
      */
     protected $_deliveryAddress;
 
     /**
      * Invoice Address.
      *
-     * @var \SixBySix\RealtimeDespatch\Entity\InvoiceAddress
+     * @var InvoiceAddress
      */
     protected $_invoiceAddress;
 
     /**
      * Shipment.
      *
-     * @var \SixBySix\RealtimeDespatch\Entity\Shipment
+     * @var Shipment
      */
     protected $_shipment;
 
     /**
      * Constructor.
      *
-     * @param string $externalReference
+     * @param string|null $externalReference
      */
-    public function __construct($externalReference = null)
+    public function __construct(string $externalReference = null)
     {
         $this->_externalReference = $externalReference;
         $this->_lines             = array();
@@ -220,9 +220,9 @@ class Order extends AbstractEntity
     /**
      * Adds a new line to the report.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\OrderLine $line
+     * @param OrderLine $line
      *
-     * @return ImportReport
+     * @return Order
      */
     public function addLine(OrderLine $line)
     {
@@ -288,7 +288,7 @@ class Order extends AbstractEntity
      */
     public function getTotalPriceNet()
     {
-        return (float) $this->_totalPriceNet;
+        return $this->_totalPriceNet;
     }
 
     /**
@@ -298,7 +298,7 @@ class Order extends AbstractEntity
      */
     public function getTotalPriceGross()
     {
-        return (float) $this->_totalPriceGross;
+        return $this->_totalPriceGross;
     }
 
     /**
@@ -308,7 +308,7 @@ class Order extends AbstractEntity
      */
     public function getTotalPriceTax()
     {
-        return (float) $this->_totalPriceTax;
+        return $this->_totalPriceTax;
     }
 
     /**
@@ -318,7 +318,7 @@ class Order extends AbstractEntity
      */
     public function getTotalTax()
     {
-        return (float) $this->_totalTax;
+        return $this->_totalTax;
     }
 
     /**
@@ -338,7 +338,7 @@ class Order extends AbstractEntity
      */
     public function getShippingPriceNet()
     {
-        return (float) $this->_shippingPriceNet;
+        return $this->_shippingPriceNet;
     }
 
     /**
@@ -348,7 +348,7 @@ class Order extends AbstractEntity
      */
     public function getShippingPriceGross()
     {
-        return (float) $this->_shippingPriceGross;
+        return $this->_shippingPriceGross;
     }
 
     /**
@@ -358,7 +358,7 @@ class Order extends AbstractEntity
      */
     public function getShippingTax()
     {
-        return (float) $this->_shippingTax;
+        return $this->_shippingTax;
     }
 
     /**
@@ -378,7 +378,7 @@ class Order extends AbstractEntity
      */
     public function getGoodsPriceNet()
     {
-        return (float) $this->_goodsPriceNet;
+        return $this->_goodsPriceNet;
     }
 
     /**
@@ -388,7 +388,7 @@ class Order extends AbstractEntity
      */
     public function getGoodsPriceGross()
     {
-        return (float) $this->_goodsPriceGross;
+        return $this->_goodsPriceGross;
     }
 
     /**
@@ -398,7 +398,7 @@ class Order extends AbstractEntity
      */
     public function getGoodsTax()
     {
-        return (float) $this->_goodsTax;
+        return $this->_goodsTax;
     }
 
     /**
@@ -464,7 +464,7 @@ class Order extends AbstractEntity
     /**
      * Delivery Address Getter.
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\DeliveryAddress
+     * @return DeliveryAddress
      */
     public function getDeliveryAddress()
     {
@@ -474,7 +474,7 @@ class Order extends AbstractEntity
     /**
      * Invoice Address Getter.
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\InvoiceAddress
+     * @return InvoiceAddress
      */
     public function getInvoiceAddress()
     {
@@ -484,7 +484,7 @@ class Order extends AbstractEntity
     /**
      * Shipment Getter.
      *
-     * @return string
+     * @return Shipment
      */
     public function getShipment()
     {
@@ -496,9 +496,9 @@ class Order extends AbstractEntity
      *
      * @param string $externalReference
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setExternalReference($externalReference)
+    public function setExternalReference(string $externalReference)
     {
         $this->_externalReference = $externalReference;
 
@@ -510,9 +510,9 @@ class Order extends AbstractEntity
      *
      * @param string $state
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setState($state)
+    public function setState(string $state)
     {
         $this->_state = $state;
 
@@ -524,9 +524,9 @@ class Order extends AbstractEntity
      *
      * @param string $paymentGatewayIdentifier
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setPaymentGatewayIdentifier($paymentGatewayIdentifier)
+    public function setPaymentGatewayIdentifier(string $paymentGatewayIdentifier)
     {
         $this->_paymentGatewayIdentifier = $paymentGatewayIdentifier;
 
@@ -538,9 +538,9 @@ class Order extends AbstractEntity
      *
      * @param string $paymentTransactionInfo
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setPaymentTransactionInfo($paymentTransactionInfo)
+    public function setPaymentTransactionInfo(string $paymentTransactionInfo)
     {
         $this->_paymentTransactionInfo = $paymentTransactionInfo;
 
@@ -552,9 +552,9 @@ class Order extends AbstractEntity
      *
      * @param string $customerComment
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setCustomerComment($customerComment)
+    public function setCustomerComment(string $customerComment)
     {
         $this->_customerComment = $customerComment;
 
@@ -566,9 +566,9 @@ class Order extends AbstractEntity
      *
      * @param float $totalPriceNet
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setTotalPriceNet($totalPriceNet)
+    public function setTotalPriceNet(float $totalPriceNet)
     {
         $this->_totalPriceNet = (float) $totalPriceNet;
 
@@ -580,9 +580,9 @@ class Order extends AbstractEntity
      *
      * @param float $totalPriceGross
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setTotalPriceGross($totalPriceGross)
+    public function setTotalPriceGross(float $totalPriceGross)
     {
         $this->_totalPriceGross = (float) $totalPriceGross;
 
@@ -594,9 +594,9 @@ class Order extends AbstractEntity
      *
      * @param float $totalPriceTax
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setTotalPriceTax($totalPriceTax)
+    public function setTotalPriceTax(float $totalPriceTax)
     {
         $this->_totalPriceTax = (float) $totalPriceTax;
 
@@ -608,9 +608,9 @@ class Order extends AbstractEntity
      *
      * @param float $totalTax
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setTotalTax($totalTax)
+    public function setTotalTax(float $totalTax)
     {
         $this->_totalTax = (float) $totalTax;
 
@@ -622,9 +622,9 @@ class Order extends AbstractEntity
      *
      * @param string $taxCode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setTaxCode($taxCode)
+    public function setTaxCode(string $taxCode)
     {
         $this->_taxCode = (float) $taxCode;
 
@@ -636,9 +636,9 @@ class Order extends AbstractEntity
      *
      * @param float $shippingPriceNet
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setShippingPriceNet($shippingPriceNet)
+    public function setShippingPriceNet(float $shippingPriceNet)
     {
         $this->_shippingPriceNet = (float) $shippingPriceNet;
 
@@ -650,9 +650,9 @@ class Order extends AbstractEntity
      *
      * @param float $shippingPriceGross
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setShippingPriceGross($shippingPriceGross)
+    public function setShippingPriceGross(float $shippingPriceGross)
     {
         $this->_shippingPriceGross = (float) $shippingPriceGross;
 
@@ -664,9 +664,9 @@ class Order extends AbstractEntity
      *
      * @param float $shippingTax
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setShippingTax($shippingTax)
+    public function setShippingTax(float $shippingTax)
     {
         $this->_shippingTax = (float) $shippingTax;
 
@@ -678,9 +678,9 @@ class Order extends AbstractEntity
      *
      * @param string $shippingTaxCode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setShippingTaxCode($shippingTaxCode)
+    public function setShippingTaxCode(string $shippingTaxCode)
     {
         $this->_shippingTaxCode = $shippingTaxCode;
 
@@ -692,9 +692,9 @@ class Order extends AbstractEntity
      *
      * @param float $goodsPriceNet
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setGoodsPriceNet($goodsPriceNet)
+    public function setGoodsPriceNet(float $goodsPriceNet)
     {
         $this->_goodsPriceNet = (float) $goodsPriceNet;
 
@@ -706,9 +706,9 @@ class Order extends AbstractEntity
      *
      * @param float $goodsPriceGross
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setGoodsPriceGross($goodsPriceGross)
+    public function setGoodsPriceGross(float $goodsPriceGross)
     {
         $this->_goodsPriceGross = (float) $goodsPriceGross;
 
@@ -720,9 +720,9 @@ class Order extends AbstractEntity
      *
      * @param float $goodsTax
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setGoodsTax($goodsTax)
+    public function setGoodsTax(float $goodsTax)
     {
         $this->_goodsTax = (float) $goodsTax;
 
@@ -734,9 +734,9 @@ class Order extends AbstractEntity
      *
      * @param string $goodsTaxCode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setGoodsTaxCode($goodsTaxCode)
+    public function setGoodsTaxCode(string $goodsTaxCode)
     {
         $this->_goodsTaxCode = $goodsTaxCode;
 
@@ -748,9 +748,9 @@ class Order extends AbstractEntity
      *
      * @param string $currency
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setCurrency($currency)
+    public function setCurrency(string $currency)
     {
         $this->_currency = $currency;
 
@@ -762,9 +762,9 @@ class Order extends AbstractEntity
      *
      * @param string $currencyUnits
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setCurrencyUnits($currencyUnits)
+    public function setCurrencyUnits(string $currencyUnits)
     {
         $this->_currencyUnits = $currencyUnits;
 
@@ -776,9 +776,9 @@ class Order extends AbstractEntity
      *
      * @param string $promotionCode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setPromotionCode($promotionCode)
+    public function setPromotionCode(string $promotionCode)
     {
         $this->_promotionCode = $promotionCode;
 
@@ -790,9 +790,9 @@ class Order extends AbstractEntity
      *
      * @param string $promotionDescription
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setPromotionDescription($promotionDescription)
+    public function setPromotionDescription(string $promotionDescription)
     {
         $this->_promotionDescription = $promotionDescription;
 
@@ -804,9 +804,9 @@ class Order extends AbstractEntity
      *
      * @param string $source
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setSource($source)
+    public function setSource(string $source)
     {
         $this->_source = $source;
 
@@ -816,11 +816,11 @@ class Order extends AbstractEntity
     /**
      * Delivery Address Setter.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\DeliveryAddress $deliveryAddress
+     * @param DeliveryAddress $deliveryAddress
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setDeliveryAddress(\SixBySix\RealtimeDespatch\Entity\DeliveryAddress $deliveryAddress)
+    public function setDeliveryAddress(DeliveryAddress $deliveryAddress)
     {
         $this->_deliveryAddress = $deliveryAddress;
 
@@ -830,11 +830,11 @@ class Order extends AbstractEntity
     /**
      * Invoice Address Setter.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\InvoiceAddress $invoiceAddress
+     * @param InvoiceAddress $invoiceAddress
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setInvoiceAddress(\SixBySix\RealtimeDespatch\Entity\InvoiceAddress $invoiceAddress)
+    public function setInvoiceAddress(InvoiceAddress $invoiceAddress)
     {
         $this->_invoiceAddress = $invoiceAddress;
 
@@ -844,11 +844,11 @@ class Order extends AbstractEntity
     /**
      * Shipment Setter.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\Shipment $shipment
+     * @param Shipment $shipment
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Order
+     * @return Order
      */
-    public function setShipment(\SixBySix\RealtimeDespatch\Entity\Shipment $shipment)
+    public function setShipment(Shipment $shipment)
     {
         $this->_shipment = $shipment;
 

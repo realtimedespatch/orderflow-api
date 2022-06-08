@@ -4,8 +4,11 @@ namespace SixBySix\RealtimeDespatch\Gateway;
 
 use Buzz\Browser as HttpClient;
 use Buzz\Middleware\MiddlewareInterface as MiddlewareInterface;
+use DOMDocument;
+use Exception;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use SimpleXMLElement;
 
 /**
  * Default Gateway.
@@ -24,7 +27,7 @@ class DefaultGateway implements MiddlewareInterface
     /**
      * Api Client.
      *
-     * @var \Buzz\Browser
+     * @var HttpClient
      */
     protected $_client;
 
@@ -45,25 +48,25 @@ class DefaultGateway implements MiddlewareInterface
     /**
      * Request Body.
      *
-     * @var \DOMDocument
+     * @var DOMDocument
      */
     protected $_lastRequest;
 
     /**
      * Response Body.
      *
-     * @var \DOMDocument
+     * @var DOMDocument
      */
     protected $_lastResponse;
 
     /**
      * Constructor
      *
-     * @param \Buzz\Browser $client
+     * @param HttpClient $client
      * @param string $baseUrl
      * @param array $options
      */
-    public function __construct(HttpClient $client, $baseUrl, $options = array())
+    public function __construct(HttpClient $client, string $baseUrl, array $options = array())
     {
         $this->_client  = $client;
         $this->_baseUrl = $baseUrl;
@@ -80,9 +83,9 @@ class DefaultGateway implements MiddlewareInterface
         $this->_lastRequest = null;
 
         try {
-            $this->_lastRequest = new \SimpleXMLElement($request->getBody());
+            $this->_lastRequest = new SimpleXMLElement($request->getBody());
         }
-        catch (\Exception $ex) {
+        catch (Exception $ex) {
             $this->_lastRequest = $next($request);
             return;
         }
@@ -92,10 +95,13 @@ class DefaultGateway implements MiddlewareInterface
 
     /**
      * {@inheritdoc}
+     * @throws Exception
      */
     public function handleResponse(RequestInterface $request, ResponseInterface $response, callable $next)
     {
-        $this->_lastResponse = new \SimpleXMLElement($response->getBody());
+        $body = (string) $response->getBody();
+
+        $this->_lastResponse = new SimpleXMLElement($response->getBody());
 
         return $next($request, $response);
     }
@@ -103,7 +109,7 @@ class DefaultGateway implements MiddlewareInterface
     /**
      * Returns the last request.
      *
-     * @return \SimpleXMLElement
+     * @return DOMDocument
      */
     public function getLastRequest()
     {
@@ -113,7 +119,7 @@ class DefaultGateway implements MiddlewareInterface
     /**
      * Returns the lastresponse.
      *
-     * @return \SimpleXMLElement
+     * @return DOMDocument
      */
     public function getLastResponse()
     {
@@ -123,7 +129,7 @@ class DefaultGateway implements MiddlewareInterface
     /**
      * Retrieve Inventory.
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
     public function retrieveInventory()
     {
@@ -139,9 +145,9 @@ class DefaultGateway implements MiddlewareInterface
      *
      * @param string $body
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
-    public function importProducts($body)
+    public function importProducts(string $body)
     {
         $this->_client->post(
             $this->_createUrl(self::API_ENDPOINT_PRODUCT_IMPORT),
@@ -157,11 +163,11 @@ class DefaultGateway implements MiddlewareInterface
      *
      * @param string $orderId     Primary order ID (typically increment_id)
      * @param string $type        Notification Type
-     * @param string $altOrderId  Alternative order ID
+     * @param string|null $altOrderId  Alternative order ID
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
-    public function orderNotification($orderId, $type, $altOrderId = null)
+    public function orderNotification(string $orderId, string $type, string $altOrderId = null)
     {
         $query = [
             'thirdPartyReference' => $orderId,
@@ -191,9 +197,9 @@ class DefaultGateway implements MiddlewareInterface
      * @param string $sku  Product SKU
      * @param string $type Notification Type
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
-    public function productNotification($sku, $type)
+    public function productNotification(string $sku, string $type)
     {
         $this->_client->post(
             $this->_createUrl(
@@ -216,9 +222,9 @@ class DefaultGateway implements MiddlewareInterface
      *
      * @param string $externalReference
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
-    public function cancelOrder($externalReference)
+    public function cancelOrder(string $externalReference)
     {
         $this->_client->post(
             $this->_createUrl(
@@ -233,7 +239,7 @@ class DefaultGateway implements MiddlewareInterface
     /**
      * Retrieve Order Details.
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
     public function retrieveOrderDetails($externalReference)
     {
@@ -252,9 +258,9 @@ class DefaultGateway implements MiddlewareInterface
      *
      * @param string $body
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
-    public function importOrders($body)
+    public function importOrders(string $body)
     {
         $this->_client->post(
             $this->_createUrl(self::API_ENDPOINT_ORDER_IMPORT),
@@ -270,9 +276,9 @@ class DefaultGateway implements MiddlewareInterface
      *
      * @param string $body
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
-    public function importReturns($body)
+    public function importReturns(string $body)
     {
         $this->_client->post(
             $this->_createUrl(self::API_ENDPOINT_RETURN_IMPORT),
@@ -287,11 +293,11 @@ class DefaultGateway implements MiddlewareInterface
      * Creates a new endpoint url.
      *
      * @param string $resource
-     * @param array  $options
+     * @param array $options
      *
      * @return string
      */
-    protected function _createUrl($resource, $options = array())
+    protected function _createUrl(string $resource, array $options = array())
     {
         $options = array_merge_recursive($this->_options, $options);
 

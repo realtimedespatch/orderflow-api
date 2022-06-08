@@ -2,10 +2,13 @@
 
 namespace SixBySix\RealtimeDespatch\Service;
 
-use \SixBySix\RealtimeDespatch\Gateway\DefaultGateway;
+use Exception;
+use SimpleXMLElement;
+use SixBySix\RealtimeDespatch\Gateway\DefaultGateway;
 
-use \SixBySix\RealtimeDespatch\Document\DocFactory;
-use \SixBySix\RealtimeDespatch\Report\ImportReportFactory;
+use SixBySix\RealtimeDespatch\Document\DocFactory;
+use SixBySix\RealtimeDespatch\Report\ImportReportFactor;
+use SixBySix\RealtimeDespatch\Report\ImportReportFactory;
 
 /**
  * Abstract Service.
@@ -22,7 +25,7 @@ abstract class AbstractService
      /**
       * Constructor.
       *
-      * @param \SixBySix\RealtimeDespatch\Gateway\DefaultGateway $gateway
+      * @param DefaultGateway $gateway
       */
      public function __construct(DefaultGateway $gateway)
      {
@@ -32,11 +35,11 @@ abstract class AbstractService
      /**
       * Returns the current import report builder.
       *
-      * @param \SimpleXMLElement $response
+      * @param SimpleXMLElement $response
       *
-      * @return \SixBySix\RealtimeDespatch\Report\ImportReportFactor
+      * @return \SixBySix\RealtimeDespatch\Report\ImportReport
       */
-     protected function _createImportReport(\SimpleXMLElement $response)
+     protected function _createImportReport(SimpleXMLElement $response)
      {
         $importReportFactory = new ImportReportFactory;
 
@@ -46,7 +49,7 @@ abstract class AbstractService
      /**
       * Returns the current document builder.
       *
-      * @return \SixBySix\RealtimeDespatch\Service\DocFactory
+      * @return DocFactory
       */
      protected function _getDocumentBuilder()
      {
@@ -62,7 +65,7 @@ abstract class AbstractService
      {
          try {
              return $this->_gateway->getLastRequest()->saveXML();
-         } catch (\Exception $ex) {
+         } catch (Exception $ex) {
              return $this->_gateway->getLastRequest()->getUrl();
          }
      }

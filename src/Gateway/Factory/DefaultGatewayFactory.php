@@ -20,9 +20,9 @@ class DefaultGatewayFactory
     /**
      * Creates a new default gateway instance
      *
-     * @param \SixBySix\RealtimeDespatch\Api\Credentials $credentials
+     * @param Credentials $credentials
      *
-     * @return \SixBySix\RealtimeDespatch\Gateway\DefaultGateway
+     * @return DefaultGateway
      */
     public function create(Credentials $credentials)
     {

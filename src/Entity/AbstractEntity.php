@@ -2,6 +2,9 @@
 
 namespace SixBySix\RealtimeDespatch\Entity;
 
+use ReflectionClass;
+use ReflectionProperty;
+
 /**
  * Abstract Entity.
  */
@@ -36,7 +39,7 @@ abstract class AbstractEntity
     /**
      * Sets a parameter value.
      *
-     * @return SixBySix\RealtimeDespatch\Entity\AbstractEntity
+     * @return AbstractEntity
      */
     public function setParam($key, $value)
     {
@@ -60,10 +63,10 @@ abstract class AbstractEntity
      *
      * @return array
      */
-    public function toArray($hideNull = false)
+    public function toArray(bool $hideNull = false)
     {
-        $reflect = new \ReflectionClass($this);
-        $props   = $reflect->getProperties(\ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED);
+        $reflect = new ReflectionClass($this);
+        $props   = $reflect->getProperties(ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED);
         $values  = array();
 
         foreach ($props as $prop) {
@@ -73,7 +76,7 @@ abstract class AbstractEntity
                 continue;
             }
 
-            if ($value instanceof \SixBySix\RealtimeDespatch\Entity\AbstractEntity) {
+            if ($value instanceof AbstractEntity) {
                 continue;
             }
 

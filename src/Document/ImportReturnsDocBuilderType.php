@@ -2,6 +2,9 @@
 
 namespace SixBySix\RealtimeDespatch\Document;
 
+use DOMDocument;
+use SixBySix\RealtimeDespatch\Entity\RMA;
+
 /**
  * Import Returns Doc Builder Type.
  */
@@ -9,10 +12,11 @@ class ImportReturnsDocBuilderType extends DocBuilderType
 {
     /**
      * {@inheritdoc}
+     * @throws \DOMException
      */
     public function build()
     {
-        $this->_doc  = new \DOMDocument('1.0', 'UTF-8');
+        $this->_doc  = new DOMDocument('1.0', 'UTF-8');
         $this->_root = $this->_doc->appendChild($this->_doc->createElement('imports'));
 
         foreach ($this->_params['returns'] as $return) {
@@ -25,11 +29,14 @@ class ImportReturnsDocBuilderType extends DocBuilderType
     /**
      * Builds an individual import line.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\RMA $return
+     * @param RMA $return
      *
      * @return void
+     * @throws \DOMException
+     * @throws \DOMException
+     * @throws \DOMException
      */
-    protected function _buildImport(\SixBySix\RealtimeDespatch\Entity\RMA $return)
+    protected function _buildImport(RMA $return)
     {
         $import = $this->_root->appendChild($this->_doc->createElement('import'));
 
@@ -37,8 +44,7 @@ class ImportReturnsDocBuilderType extends DocBuilderType
         $import->setAttribute('operation', 'insert');
         $import->setAttribute('externalReference', $return->getExternalReference());
 
-        $content  = "";
-        $content .= $this->_buildParams($return->toArray(true));
+        $content = $this->_buildParams($return->toArray(true));
         $content .= $this->_buildReturnLines($return->getLines());
 
         $import->appendChild($import->ownerDocument->createCDATASection($content));

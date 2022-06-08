@@ -2,6 +2,9 @@
 
 namespace SixBySix\RealtimeDespatch\Document;
 
+use DOMDocument;
+use Exception;
+
 /**
  * Doc Factory.
  */
@@ -17,16 +20,19 @@ class DocFactory
      * Creates a new request builder instance
      *
      * @param string $type
-     * @param array  $options
+     * @param array $options
      *
-     * @return \DOMDocument
+     * @return DOMDocument
+     * @throws Exception
+     * @throws Exception
+     * @throws Exception
      */
-    public function build($type, array $params = array())
+    public function build(string $type, array $params = array())
     {
         $class = "\SixBySix\RealtimeDespatch\Document\\".$type."DocBuilderType";
 
         if ( ! class_exists($class, true)) {
-            throw new \Exception('Builder does not exist');
+            throw new Exception('Builder does not exist');
         }
 
         $builder = new DocBuilder(new $class($params));
@@ -39,7 +45,10 @@ class DocFactory
      *
      * @param array $params
      *
-     * @return \DOMDocument
+     * @return DOMDocument
+     * @throws Exception
+     * @throws Exception
+     * @throws Exception
      */
     public function buildProductUpdate(array $params = array())
     {
@@ -54,7 +63,10 @@ class DocFactory
      *
      * @param array $params
      *
-     * @return \DOMDocument
+     * @return DOMDocument
+     * @throws Exception
+     * @throws Exception
+     * @throws Exception
      */
     public function buildProductImport(array $params = array())
     {
@@ -69,7 +81,10 @@ class DocFactory
      *
      * @param array $params
      *
-     * @return \DOMDocument
+     * @return DOMDocument
+     * @throws Exception
+     * @throws Exception
+     * @throws Exception
      */
     public function buildProductMerge(array $params = array())
     {
@@ -84,7 +99,10 @@ class DocFactory
      *
      * @param array $params
      *
-     * @return \DOMDocument
+     * @return DOMDocument
+     * @throws Exception
+     * @throws Exception
+     * @throws Exception
      */
     public function buildImportOrders(array $params = array())
     {
@@ -99,7 +117,10 @@ class DocFactory
      *
      * @param array $params
      *
-     * @return \DOMDocument
+     * @return DOMDocument
+     * @throws Exception
+     * @throws Exception
+     * @throws Exception
      */
     public function buildImportReturns(array $params = array())
     {

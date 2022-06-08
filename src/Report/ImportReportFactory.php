@@ -2,6 +2,7 @@
 
 namespace SixBySix\RealtimeDespatch\Report;
 
+use SimpleXMLElement;
 use SixBySix\RealtimeDespatch\Report\ImportReport;
 use SixBySix\RealtimeDespatch\Report\ImportReportLine;
 
@@ -13,11 +14,11 @@ class ImportReportFactory
     /**
      * Creates a new gateway instance
      *
-     * @param \SimpleXMLElement $response
+     * @param SimpleXMLElement $response
      *
      * @return \SixBySix\RealtimeDespatch\Report\ImportReport
      */
-    public function createFromResponse(\SimpleXMLElement $response)
+    public function createFromResponse(SimpleXMLElement $response)
     {
         $report = new ImportReport;
 
@@ -53,7 +54,7 @@ class ImportReportFactory
      *
      * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
      */
-    protected function _createLine($lineData)
+    protected function _createLine(mixed $lineData)
     {
         $reportLine = new ImportReportLine;
 

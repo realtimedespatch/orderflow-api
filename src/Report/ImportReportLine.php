@@ -108,9 +108,9 @@ class ImportReportLine
      * @param string $key
      * @param string $value
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
+     * @return string
      */
-    public function setParam($key, $value)
+    public function setParam(string $key, string $value)
     {
         if (property_exists(get_class($this), '_'.$key)) {
             $this->{'_'.$key} = $value;
@@ -134,9 +134,9 @@ class ImportReportLine
      *
      * @param string $externalReference
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
+     * @return ImportReportLine
      */
-    public function setExternalReference($externalReference)
+    public function setExternalReference(string $externalReference)
     {
         $this->_externalReference = $externalReference;
 
@@ -158,9 +158,9 @@ class ImportReportLine
      *
      * @param string $type
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
+     * @return void
      */
-    public function setType($type)
+    public function setType(string $type)
     {
         $this->_type = $type;
     }
@@ -180,9 +180,9 @@ class ImportReportLine
      *
      * @param string $operation
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
+     * @return void
      */
-    public function setOperation($operation)
+    public function setOperation(string $operation)
     {
         $this->_operation = $operation;
     }
@@ -202,9 +202,9 @@ class ImportReportLine
      *
      * @param string $entity
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
+     * @return void
      */
-    public function setEntity($entity)
+    public function setEntity(string $entity)
     {
         $this->_entity = $entity;
     }
@@ -224,9 +224,9 @@ class ImportReportLine
      *
      * @param string $item
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
+     * @return void
      */
-    public function setItem($item)
+    public function setItem(string $item)
     {
         $this->_item = $item;
     }
@@ -246,9 +246,9 @@ class ImportReportLine
      *
      * @param string $timestamp
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
+     * @return void
      */
-    public function setTimestamp($timestamp)
+    public function setTimestamp(string $timestamp)
     {
         $this->_queryTime = $timestamp;
     }
@@ -303,9 +303,9 @@ class ImportReportLine
      *
      * @param boolean $isSuccess
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
+     * @return void
      */
-    public function setIsSuccess($isSuccess)
+    public function setIsSuccess(bool $isSuccess)
     {
         $this->_isSuccess = $isSuccess;
     }
@@ -325,7 +325,7 @@ class ImportReportLine
      *
      * @param boolean $isSuccess
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
+     * @return void
      */
     public function setIsFailure($isFailure)
     {
@@ -347,9 +347,9 @@ class ImportReportLine
      *
      * @param boolean $isDuplicate
      *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
+     * @return void
      */
-    public function setIsDuplicate($isDuplicate)
+    public function setIsDuplicate(bool $isDuplicate)
     {
         $this->_isDuplicate = $isDuplicate;
     }

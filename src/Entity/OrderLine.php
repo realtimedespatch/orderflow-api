@@ -108,7 +108,7 @@ class OrderLine extends AbstractEntity
     /**
      * Product Getter.
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return SixBySix\RealtimeDespatch\Entity\Product
      */
     public function getProduct()
     {
@@ -132,13 +132,13 @@ class OrderLine extends AbstractEntity
      */
     public function getQuantity()
     {
-        return (integer) $this->_quantity;
+        return $this->_quantity;
     }
 
     /**
      * Description Getter.
      *
-     * @return type
+     * @return string
      */
     public function getDescription()
     {
@@ -152,7 +152,7 @@ class OrderLine extends AbstractEntity
      */
     public function getTotalPriceNet()
     {
-        return (float) $this->_totalPriceNet;
+        return $this->_totalPriceNet;
     }
 
     /**
@@ -162,7 +162,7 @@ class OrderLine extends AbstractEntity
      */
     public function getTotalPriceGross()
     {
-        return (float) $this->_totalPriceGross;
+        return $this->_totalPriceGross;
     }
 
     /**
@@ -172,7 +172,7 @@ class OrderLine extends AbstractEntity
      */
     public function getTotalTax()
     {
-        return (float) $this->_totalTax;
+        return $this->_totalTax;
     }
 
     /**
@@ -192,7 +192,7 @@ class OrderLine extends AbstractEntity
      */
     public function getUnitPriceNet()
     {
-        return (float) $this->_unitPriceNet;
+        return $this->_unitPriceNet;
     }
 
     /**
@@ -202,7 +202,7 @@ class OrderLine extends AbstractEntity
      */
     public function getUnitPriceGross()
     {
-        return (float) $this->_unitPriceGross;
+        return $this->_unitPriceGross;
     }
 
     /**
@@ -212,7 +212,7 @@ class OrderLine extends AbstractEntity
      */
     public function getUnitTax()
     {
-        return (float) $this->_unitTax;
+        return $this->_unitTax;
     }
 
     /**
@@ -248,11 +248,11 @@ class OrderLine extends AbstractEntity
     /**
      * Product Setter.
      *
-     * @param \SixBySix\RealtimeDespatch\Entity\Product $product
+     * @param Product $product
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setProduct($product)
+    public function setProduct(Product $product)
     {
         $this->_product = $product;
 
@@ -264,9 +264,9 @@ class OrderLine extends AbstractEntity
      *
      * @param integer $quantity
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setQuantity($quantity)
+    public function setQuantity(int $quantity)
     {
         $this->_quantity = (integer) $quantity;
 
@@ -278,9 +278,9 @@ class OrderLine extends AbstractEntity
      *
      * @param string $description
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->_description = $description;
 
@@ -292,9 +292,9 @@ class OrderLine extends AbstractEntity
      *
      * @param float $totalPriceNet
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setTotalPriceNet($totalPriceNet)
+    public function setTotalPriceNet(float $totalPriceNet)
     {
         $this->_totalPriceNet = (float) $totalPriceNet;
 
@@ -306,9 +306,9 @@ class OrderLine extends AbstractEntity
      *
      * @param float $totalPriceGross
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setTotalPriceGross($totalPriceGross)
+    public function setTotalPriceGross(float $totalPriceGross)
     {
         $this->_totalPriceGross = (float) $totalPriceGross;
 
@@ -320,9 +320,9 @@ class OrderLine extends AbstractEntity
      *
      * @param float $totalTax
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setTotalTax($totalTax)
+    public function setTotalTax(float $totalTax)
     {
         $this->_totalTax = (float) $totalTax;
 
@@ -334,9 +334,9 @@ class OrderLine extends AbstractEntity
      *
      * @param string $totalTaxCode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setTotalTaxCode($totalTaxCode)
+    public function setTotalTaxCode(string $totalTaxCode)
     {
         $this->_totalTaxCode = $totalTaxCode;
 
@@ -348,9 +348,9 @@ class OrderLine extends AbstractEntity
      *
      * @param float $unitPriceNet
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setUnitPriceNet($unitPriceNet)
+    public function setUnitPriceNet(float $unitPriceNet)
     {
         $this->_unitPriceNet = (float) $unitPriceNet;
 
@@ -362,9 +362,9 @@ class OrderLine extends AbstractEntity
      *
      * @param float $unitPriceGross
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setUnitPriceGross($unitPriceGross)
+    public function setUnitPriceGross(float $unitPriceGross)
     {
         $this->_unitPriceGross = (float) $unitPriceGross;
 
@@ -376,9 +376,9 @@ class OrderLine extends AbstractEntity
      *
      * @param float $unitTax
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setUnitTax($unitTax)
+    public function setUnitTax(float $unitTax)
     {
         $this->_unitTax = (float) $unitTax;
 
@@ -390,9 +390,9 @@ class OrderLine extends AbstractEntity
      *
      * @param string $unitTaxCode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setUnitTaxCode($unitTaxCode)
+    public function setUnitTaxCode(string $unitTaxCode)
     {
         $this->_unitTaxCode = $unitTaxCode;
 
@@ -404,9 +404,9 @@ class OrderLine extends AbstractEntity
      *
      * @param string $promotionCode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setPromotionCode($promotionCode)
+    public function setPromotionCode(string $promotionCode)
     {
         $this->_promotionCode = $promotionCode;
 
@@ -418,9 +418,9 @@ class OrderLine extends AbstractEntity
      *
      * @param string $promotionPriceDescription
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\OrderLine
+     * @return OrderLine
      */
-    public function setPromotionPriceDescription($promotionPriceDescription)
+    public function setPromotionPriceDescription(string $promotionPriceDescription)
     {
         $this->_promotionPriceDescription = $promotionPriceDescription;
 

@@ -13,7 +13,7 @@ class InventoryService extends AbstractService
     /**
      * Retrieves the current inventory.
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\InventoryLineCollection
+     * @return InventoryLineCollection
      */
     public function retrieveInventory()
     {

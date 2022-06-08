@@ -2,7 +2,7 @@
 
 namespace SixBySix\RealtimeDespatch\Entity;
 
-use \SixBySix\RealtimeDespatch\Entity\RMALine;
+use SixBySix\RealtimeDespatch\Entity\RMALine;
 
 /**
  * RMA.
@@ -68,9 +68,9 @@ class RMA extends AbstractEntity
     /**
      * Constructor.
      *
-     * @param string $authorisation
+     * @param string|null $authorisation
      */
-    public function __construct($authorisation = null)
+    public function __construct(string $authorisation = null)
     {
         $this->_authorisation = $authorisation;
         $this->_lines         = array();
@@ -91,7 +91,7 @@ class RMA extends AbstractEntity
      *
      * @param \SixBySix\RealtimeDespatch\Entity\RMALine $line
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMA
+     * @return RMA
      */
     public function addLine(RMALine $line)
     {
@@ -115,9 +115,9 @@ class RMA extends AbstractEntity
      *
      * @param string $externalReference
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMA
+     * @return RMA
      */
-    public function setExternalReference($externalReference)
+    public function setExternalReference(string $externalReference)
     {
         $this->_externalReference = $externalReference;
 
@@ -139,9 +139,9 @@ class RMA extends AbstractEntity
      *
      * @param string $authorisation
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMA
+     * @return RMA
      */
-    public function setAuthorisation($authorisation)
+    public function setAuthorisation(string $authorisation)
     {
         $this->_authorisation = $authorisation;
 
@@ -151,7 +151,7 @@ class RMA extends AbstractEntity
     /**
      * Authorised Getter.
      *
-     * @return string
+     * @return bool
      */
     public function getAuthorised()
     {
@@ -163,9 +163,9 @@ class RMA extends AbstractEntity
      *
      * @param boolean $authorised
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMA
+     * @return RMA
      */
-    public function setAuthorised($authorised)
+    public function setAuthorised(bool $authorised)
     {
         $this->_authorised = (boolean) $authorised;
 
@@ -179,7 +179,7 @@ class RMA extends AbstractEntity
      */
     public function getType()
     {
-        return (string) $this->_type;
+        return $this->_type;
     }
 
     /**
@@ -187,9 +187,9 @@ class RMA extends AbstractEntity
      *
      * @param string $type
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMA
+     * @return RMA
      */
-    public function setType($type)
+    public function setType(string $type)
     {
         $this->_type = $type;
 
@@ -203,7 +203,7 @@ class RMA extends AbstractEntity
      */
     public function getStoreId()
     {
-        return (string) $this->_storeId;
+        return $this->_storeId;
     }
 
     /**
@@ -211,9 +211,9 @@ class RMA extends AbstractEntity
      *
      * @param string $storeId
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMA
+     * @return RMA
      */
-    public function setStoreId($storeId)
+    public function setStoreId(string $storeId)
     {
         $this->_storeId = $storeId;
 
@@ -227,7 +227,7 @@ class RMA extends AbstractEntity
      */
     public function getReturnDate()
     {
-        return (string) $this->_returnDate;
+        return $this->_returnDate;
     }
 
     /**
@@ -235,9 +235,9 @@ class RMA extends AbstractEntity
      *
      * @param string $returnDate
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMA
+     * @return RMA
      */
-    public function setReturnDate($returnDate)
+    public function setReturnDate(string $returnDate)
     {
         $this->_returnDate = $returnDate;
 
@@ -259,9 +259,9 @@ class RMA extends AbstractEntity
      *
      * @param string $note
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\RMA
+     * @return RMA
      */
-    public function setNote($note)
+    public function setNote(string $note)
     {
         $this->_note = $note;
 

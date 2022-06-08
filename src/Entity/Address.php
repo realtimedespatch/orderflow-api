@@ -274,9 +274,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $addressLine1
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setAddressLine1($addressLine1)
+    public function setAddressLine1(string $addressLine1)
     {
         $this->_addressLine1 = $addressLine1;
 
@@ -288,9 +288,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $addressLine2
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setAddressLine2($addressLine2)
+    public function setAddressLine2(string $addressLine2)
     {
         $this->_addressLine2 = $addressLine2;
 
@@ -302,9 +302,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $addressLine3
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setAddressLine3($addressLine3)
+    public function setAddressLine3(string $addressLine3)
     {
         $this->_addressLine3 = $addressLine3;
 
@@ -316,9 +316,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $addressLine4
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setAddressLine4($addressLine4)
+    public function setAddressLine4(string $addressLine4)
     {
         $this->_addressLine4 = $addressLine4;
 
@@ -330,9 +330,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $addressLine5
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setAddressLine5($addressLine5)
+    public function setAddressLine5(string $addressLine5)
     {
         $this->_addressLine5 = $addressLine5;
 
@@ -344,9 +344,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $addressLine6
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setAddressLine6($addressLine6)
+    public function setAddressLine6(string $addressLine6)
     {
         $this->_addressLine6 = $addressLine6;
 
@@ -358,9 +358,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $countryCode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setCountryCode($countryCode)
+    public function setCountryCode(string $countryCode)
     {
         $this->_countryCode = $countryCode;
 
@@ -372,9 +372,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $postCode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setPostCode($postCode)
+    public function setPostCode(string $postCode)
     {
         $this->_postCode = $postCode;
 
@@ -386,9 +386,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $contactName
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setContactName($contactName)
+    public function setContactName(string $contactName)
     {
         $this->_contactName = $contactName;
 
@@ -400,9 +400,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $emailAddress
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setEmailAddress($emailAddress)
+    public function setEmailAddress(string $emailAddress)
     {
         $this->_emailAddress = $emailAddress;
 
@@ -414,9 +414,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $dayPhoneNumber
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setDayPhoneNumber($dayPhoneNumber)
+    public function setDayPhoneNumber(string $dayPhoneNumber)
     {
         $this->_dayPhoneNumber = $dayPhoneNumber;
 
@@ -428,9 +428,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $eveningPhoneNumber
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setEveningPhoneNumber($eveningPhoneNumber)
+    public function setEveningPhoneNumber(string $eveningPhoneNumber)
     {
         $this->_eveningPhoneNumber = $eveningPhoneNumber;
 
@@ -442,9 +442,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $mobilePhoneNumber
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setMobilePhoneNumber($mobilePhoneNumber)
+    public function setMobilePhoneNumber(string $mobilePhoneNumber)
     {
         $this->_mobilePhoneNumber = $mobilePhoneNumber;
 
@@ -456,9 +456,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $faxNumber
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setFaxNumber($faxNumber)
+    public function setFaxNumber(string $faxNumber)
     {
         $this->_faxNumber = $faxNumber;
 
@@ -470,9 +470,9 @@ abstract class Address extends AbstractEntity
      *
      * @param string $companyName
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return Address
      */
-    public function setCompanyName($companyName)
+    public function setCompanyName(string $companyName)
     {
         $this->_companyName = $companyName;
 
@@ -482,7 +482,7 @@ abstract class Address extends AbstractEntity
     /**
      * Collapses the address.
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Address
+     * @return void
      */
     public function collapse($index = 1)
     {

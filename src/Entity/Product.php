@@ -143,9 +143,9 @@ class Product extends AbstractEntity
     /**
      * Constructor.
      *
-     * @param string $externalReference
+     * @param string|null $externalReference
      */
-    public function __construct($externalReference = null)
+    public function __construct(string $externalReference = null)
     {
         $this->_externalReference = $externalReference;
     }
@@ -165,9 +165,9 @@ class Product extends AbstractEntity
      *
      * @param string $externalReference
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\InventoryLine
+     * @return Product
      */
-    public function setExternalReference($externalReference)
+    public function setExternalReference(string $externalReference)
     {
         $this->_externalReference = $externalReference;
 
@@ -189,9 +189,9 @@ class Product extends AbstractEntity
      *
      * @param string $description
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\InventoryLine
+     * @return Product
      */
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->_description = $description;
 
@@ -225,13 +225,13 @@ class Product extends AbstractEntity
      */
     public function getWeight()
     {
-        return (float) $this->_weight;
+        return $this->_weight;
     }
 
     /**
      * Unit Weights Getter.
      *
-     * @return float
+     * @return string
      */
     public function getWeightUnits()
     {
@@ -265,7 +265,7 @@ class Product extends AbstractEntity
      */
     public function getPriceNet()
     {
-        return (float) $this->_priceNet;
+        return $this->_priceNet;
     }
 
     /**
@@ -275,7 +275,7 @@ class Product extends AbstractEntity
      */
     public function getSellable()
     {
-        return (boolean) $this->_sellable;
+        return $this->_sellable;
     }
 
     /**
@@ -285,7 +285,7 @@ class Product extends AbstractEntity
      */
     public function getPriceGross()
     {
-        return (float) $this->_priceGross;
+        return $this->_priceGross;
     }
 
     /**
@@ -295,7 +295,7 @@ class Product extends AbstractEntity
      */
     public function getTax()
     {
-        return (float) $this->_tax;
+        return $this->_tax;
     }
 
     /**
@@ -325,7 +325,7 @@ class Product extends AbstractEntity
      */
     public function getLength()
     {
-        return (float) $this->_length;
+        return $this->_length;
     }
 
     /**
@@ -335,7 +335,7 @@ class Product extends AbstractEntity
      */
     public function getWidth()
     {
-        return (float) $this->_width;
+        return $this->_width;
     }
 
     /**
@@ -345,7 +345,7 @@ class Product extends AbstractEntity
      */
     public function getHeight()
     {
-        return (float) $this->_height;
+        return $this->_height;
     }
 
     /**
@@ -355,7 +355,7 @@ class Product extends AbstractEntity
      */
     public function getArea()
     {
-        return (float) $this->_area;
+        return $this->_area;
     }
 
     /**
@@ -365,7 +365,7 @@ class Product extends AbstractEntity
      */
     public function getVolume()
     {
-        return (float) $this->_volume;
+        return $this->_volume;
     }
 
     /**
@@ -373,9 +373,9 @@ class Product extends AbstractEntity
      *
      * @param string $barcode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setBarcode($barcode)
+    public function setBarcode(string $barcode)
     {
         $this->_barcode = $barcode;
 
@@ -387,9 +387,9 @@ class Product extends AbstractEntity
      *
      * @param string $imageReference
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setImageReference($imageReference)
+    public function setImageReference(string $imageReference)
     {
         $this->_imageReference = $imageReference;
 
@@ -401,7 +401,7 @@ class Product extends AbstractEntity
      *
      * @param float $priceNet
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
     public function setWeight($weight)
     {
@@ -415,9 +415,9 @@ class Product extends AbstractEntity
      *
      * @param string $weightUnits
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setWeightUnits($weightUnits)
+    public function setWeightUnits(string $weightUnits)
     {
         $this->_weightUnits = $weightUnits;
 
@@ -429,9 +429,9 @@ class Product extends AbstractEntity
      *
      * @param string $physicalStorageTypes
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setPhysicalStorageTypes($physicalStorageTypes)
+    public function setPhysicalStorageTypes(string $physicalStorageTypes)
     {
         $this->_physicalStorageTypes = $physicalStorageTypes;
 
@@ -443,7 +443,7 @@ class Product extends AbstractEntity
      *
      * @param string $imageReference
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
     public function setCategory($category)
     {
@@ -457,9 +457,9 @@ class Product extends AbstractEntity
      *
      * @param float $priceNet
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setPriceNet($priceNet)
+    public function setPriceNet(float $priceNet)
     {
         $this->_priceNet = (float) $priceNet;
 
@@ -471,9 +471,9 @@ class Product extends AbstractEntity
      *
      * @param boolean $sellable
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setSellable($sellable)
+    public function setSellable(bool $sellable)
     {
         $this->_sellable = (boolean) $sellable;
 
@@ -485,9 +485,9 @@ class Product extends AbstractEntity
      *
      * @param float $priceGross
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setPriceGross($priceGross)
+    public function setPriceGross(float $priceGross)
     {
         $this->_priceGross = (float) $priceGross;
 
@@ -499,7 +499,7 @@ class Product extends AbstractEntity
      *
      * @param float $currency
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
     public function setTax($tax)
     {
@@ -513,9 +513,9 @@ class Product extends AbstractEntity
      *
      * @param string $taxCode
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setTaxCode($taxCode)
+    public function setTaxCode(string $taxCode)
     {
         $this->_taxCode = $taxCode;
 
@@ -527,9 +527,9 @@ class Product extends AbstractEntity
      *
      * @param float $currency
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setCurrency($currency)
+    public function setCurrency(float $currency)
     {
         $this->_currency = (float) $currency;
 
@@ -541,9 +541,9 @@ class Product extends AbstractEntity
      *
      * @param float $length
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setLength($length)
+    public function setLength(float $length)
     {
         $this->_length = (float) $length;
 
@@ -555,9 +555,9 @@ class Product extends AbstractEntity
      *
      * @param float $width
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setWidth($width)
+    public function setWidth(float $width)
     {
         $this->_width = (float) $width;
 
@@ -569,9 +569,9 @@ class Product extends AbstractEntity
      *
      * @param float $height
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setHeight($height)
+    public function setHeight(float $height)
     {
         $this->_height = (float) $height;
 
@@ -583,9 +583,9 @@ class Product extends AbstractEntity
      *
      * @param float $area
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setArea($area)
+    public function setArea(float $area)
     {
         $this->_area = (float) $area;
 
@@ -597,9 +597,9 @@ class Product extends AbstractEntity
      *
      * @param float $volume
      *
-     * @return \SixBySix\RealtimeDespatch\Entity\Product
+     * @return Product
      */
-    public function setVolume($volume)
+    public function setVolume(float $volume)
     {
         $this->_volume = (float) $volume;
 
