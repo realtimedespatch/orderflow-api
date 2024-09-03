@@ -1,6 +1,6 @@
 {
     "name": "sixbysix/realtime-despatch",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "type": "library",
     "license":"OSL-3.0",
     "description": "Real Time Despatch API Integration Library",

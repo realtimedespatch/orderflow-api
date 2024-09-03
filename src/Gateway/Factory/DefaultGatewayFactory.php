@@ -38,7 +38,11 @@ class DefaultGatewayFactory
 
         // stores the last request
         $stack->push(Middleware::mapRequest(function (RequestInterface $request) use ($gateway) {
-            $gateway->setLastRequest(new \SimpleXMLElement($request->getBody()));
+            try {
+                $gateway->setLastRequest(new \SimpleXMLElement($request->getBody()));
+            } catch (\Exception $e) {
+                $gateway->setLastRequest(null);
+            }
             return $request;
         }));
 
