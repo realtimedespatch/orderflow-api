@@ -2,8 +2,8 @@
 
 namespace SixBySix\RealtimeDespatch\Gateway;
 
-use Buzz\Browser as HttpClient;
-use Buzz\Middleware\MiddlewareInterface as MiddlewareInterface;
+use GuzzleHttp\Client;
+use GuzzleHttp\Client as HttpClient;
 use DOMDocument;
 use Exception;
 use Psr\Http\Message\RequestInterface;
@@ -13,7 +13,7 @@ use SimpleXMLElement;
 /**
  * Default Gateway.
  */
-class DefaultGateway implements MiddlewareInterface
+class DefaultGateway
 {
     const API_ENDPOINT_INVENTORY_RETRIEVAL = 'remotewarehouse/inventory.xml';
     const API_ENDPOINT_PRODUCT_IMPORT = 'remotewarehouse/imports/importitems.xml';
@@ -29,109 +29,102 @@ class DefaultGateway implements MiddlewareInterface
      *
      * @var HttpClient
      */
-    protected $_client;
+    protected HttpClient $_client;
 
     /**
      * Base URL.
      *
      * @var string
      */
-    protected $_baseUrl;
+    protected string $_baseUrl;
 
     /**
      * Default Options.
      *
-     * @var array
+     * @var array<string,array<string,string>>
      */
-    protected $_options;
+    protected array $_options;
 
     /**
      * Request Body.
-     *
-     * @var DOMDocument
+     * @var SimpleXMLElement|null
      */
-    protected $_lastRequest;
+    protected ?SimpleXMLElement $_lastRequest;
 
     /**
      * Response Body.
-     *
-     * @var DOMDocument
+     * @var SimpleXMLElement|null
      */
-    protected $_lastResponse;
+    protected ?SimpleXMLElement $_lastResponse;
 
     /**
      * Constructor
      *
-     * @param HttpClient $client
      * @param string $baseUrl
-     * @param array $options
+     * @param array<string,array<string,string>> $options
      */
-    public function __construct(HttpClient $client, string $baseUrl, array $options = array())
+    public function __construct(string $baseUrl, array $options = array())
     {
-        $this->_client  = $client;
         $this->_baseUrl = $baseUrl;
         $this->_options = $options;
-
-        $this->_client->addMiddleware($this);
     }
 
     /**
-     * {@inheritdoc}
+     * Sets the HTTP Client.
+     * @param HttpClient $httpClient
+     * @return $this
      */
-    public function handleRequest(RequestInterface $request, callable $next)
+    public function setHttpClient(Client $httpClient): DefaultGateway
     {
-        $this->_lastRequest = null;
-
-        try {
-            $this->_lastRequest = new SimpleXMLElement($request->getBody());
-        }
-        catch (Exception $ex) {
-            $this->_lastRequest = $next($request);
-            return;
-        }
-
-        return $next($request);
-    }
-
-    /**
-     * {@inheritdoc}
-     * @throws Exception
-     */
-    public function handleResponse(RequestInterface $request, ResponseInterface $response, callable $next)
-    {
-        $body = (string) $response->getBody();
-
-        $this->_lastResponse = new SimpleXMLElement($response->getBody());
-
-        return $next($request, $response);
+        $this->_client = $httpClient;
+        return $this;
     }
 
     /**
      * Returns the last request.
-     *
-     * @return DOMDocument
+     * @return SimpleXMLElement|null
      */
-    public function getLastRequest()
+    public function getLastRequest(): ?SimpleXMLElement
     {
         return $this->_lastRequest;
     }
 
     /**
-     * Returns the lastresponse.
-     *
-     * @return DOMDocument
+     * Sets the last request.
+     * @param SimpleXMLElement|null $lastRequest
+     * @return $this
      */
-    public function getLastResponse()
+    public function setLastRequest(?SimpleXMLElement $lastRequest): DefaultGateway
+    {
+        $this->_lastRequest = $lastRequest;
+        return $this;
+    }
+
+    /**
+     * Returns the last response.
+     * @return SimpleXMLElement|null
+     */
+    public function getLastResponse(): ?SimpleXMLElement
     {
         return $this->_lastResponse;
     }
 
     /**
+     * Sets the last response.
+     * @param SimpleXMLElement|null $lastResponse
+     * @return $this
+     */
+    public function setLastResponse(?SimpleXMLElement $lastResponse): DefaultGateway
+    {
+        $this->_lastResponse = $lastResponse;
+        return $this;
+    }
+
+    /**
      * Retrieve Inventory.
-     *
      * @return SimpleXMLElement
      */
-    public function retrieveInventory()
+    public function retrieveInventory(): SimpleXMLElement
     {
         $this->_client->get(
             $this->_createUrl(self::API_ENDPOINT_INVENTORY_RETRIEVAL)
@@ -142,17 +135,19 @@ class DefaultGateway implements MiddlewareInterface
 
     /**
      * Import Products.
-     *
      * @param string $body
-     *
      * @return SimpleXMLElement
      */
-    public function importProducts(string $body)
+    public function importProducts(string $body): SimpleXMLElement
     {
         $this->_client->post(
             $this->_createUrl(self::API_ENDPOINT_PRODUCT_IMPORT),
-            array('Content-Type' => 'application/xml'),
-            $body
+            [
+                'body' => $body,
+                'headers' => [
+                    'Content-Type' => 'application/xml'
+                ]
+            ]
         );
 
         return $this->getLastResponse();
@@ -164,10 +159,9 @@ class DefaultGateway implements MiddlewareInterface
      * @param string $orderId     Primary order ID (typically increment_id)
      * @param string $type        Notification Type
      * @param string|null $altOrderId  Alternative order ID
-     *
      * @return SimpleXMLElement
      */
-    public function orderNotification(string $orderId, string $type, string $altOrderId = null)
+    public function orderNotification(string $orderId, string $type, string $altOrderId = null): SimpleXMLElement
     {
         $query = [
             'thirdPartyReference' => $orderId,
@@ -182,9 +176,9 @@ class DefaultGateway implements MiddlewareInterface
         $this->_client->post(
             $this->_createUrl(
                 self::API_ENDPOINT_ORDER_UPDATE,
-                array(
-                    'query' => $query
-                )
+                [
+                    'query' => $query,
+                ]
             )
         );
 
@@ -193,13 +187,11 @@ class DefaultGateway implements MiddlewareInterface
 
     /**
      * Product Notification.
-     *
      * @param string $sku  Product SKU
      * @param string $type Notification Type
-     *
      * @return SimpleXMLElement
      */
-    public function productNotification(string $sku, string $type)
+    public function productNotification(string $sku, string $type): SimpleXMLElement
     {
         $this->_client->post(
             $this->_createUrl(
@@ -219,12 +211,10 @@ class DefaultGateway implements MiddlewareInterface
 
     /**
      * Cancel Order.
-     *
      * @param string $externalReference
-     *
      * @return SimpleXMLElement
      */
-    public function cancelOrder(string $externalReference)
+    public function cancelOrder(string $externalReference): SimpleXMLElement
     {
         $this->_client->post(
             $this->_createUrl(
@@ -238,15 +228,19 @@ class DefaultGateway implements MiddlewareInterface
 
     /**
      * Retrieve Order Details.
-     *
+     * @param string $externalReference
      * @return SimpleXMLElement
      */
-    public function retrieveOrderDetails($externalReference)
+    public function retrieveOrderDetails(string $externalReference): SimpleXMLElement
     {
         $this->_client->post(
             $this->_createUrl(
                 self::API_ENDPOINT_ORDER_DETAIL,
-                array('query' => array('externalReference' => $externalReference))
+                [
+                    'query' => [
+                        'externalReference' => $externalReference
+                    ]
+                ]
             )
         );
 
@@ -255,17 +249,19 @@ class DefaultGateway implements MiddlewareInterface
 
     /**
      * Import Orders.
-     *
      * @param string $body
-     *
      * @return SimpleXMLElement
      */
-    public function importOrders(string $body)
+    public function importOrders(string $body): SimpleXMLElement
     {
         $this->_client->post(
             $this->_createUrl(self::API_ENDPOINT_ORDER_IMPORT),
-            array('Content-Type' => 'application/xml'),
-            $body
+            [
+                'body' => $body,
+                'headers' => [
+                    'Content-Type' => 'application/xml'
+                ]
+            ]
         );
 
         return $this->getLastResponse();
@@ -273,17 +269,19 @@ class DefaultGateway implements MiddlewareInterface
 
     /**
      * Import Returns.
-     *
      * @param string $body
-     *
      * @return SimpleXMLElement
      */
-    public function importReturns(string $body)
+    public function importReturns(string $body): SimpleXMLElement
     {
         $this->_client->post(
             $this->_createUrl(self::API_ENDPOINT_RETURN_IMPORT),
-            array('Content-Type' => 'application/xml'),
-            $body
+            [
+                'body' => $body,
+                'headers' => [
+                    'Content-Type' => 'application/xml'
+                ]
+            ]
         );
 
         return $this->getLastResponse();
@@ -291,13 +289,11 @@ class DefaultGateway implements MiddlewareInterface
 
     /**
      * Creates a new endpoint url.
-     *
      * @param string $resource
-     * @param array $options
-     *
+     * @param array<string,array<string,string>> $options
      * @return string
      */
-    protected function _createUrl(string $resource, array $options = array())
+    protected function _createUrl(string $resource, array $options = array()): string
     {
         $options = array_merge_recursive($this->_options, $options);
 

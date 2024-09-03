@@ -21,10 +21,8 @@ class OrderService extends AbstractService
      *
      * @return SimpleXMLElement
      * @throws Exception
-     * @throws Exception
-     * @throws Exception
      */
-    public function notifyOrderCreation(string $orderId, string $altOrderId = null)
+    public function notifyOrderCreation(string $orderId, string $altOrderId = null): SimpleXMLElement
     {
         $response = $this->_gateway->orderNotification($orderId, 'created', $altOrderId);
 
@@ -39,13 +37,10 @@ class OrderService extends AbstractService
      * Cancels a single order.
      *
      * @param Order $order
-     *
      * @return SimpleXMLElement
      * @throws Exception
-     * @throws Exception
-     * @throws Exception
      */
-    public function cancelOrder(Order $order)
+    public function cancelOrder(Order $order): SimpleXMLElement
     {
         $response = $this->_gateway->cancelOrder($order->getExternalReference());
 
@@ -60,10 +55,9 @@ class OrderService extends AbstractService
      * Retrieves the details for an order.
      *
      * @param Order $order
-     *
      * @return SimpleXMLElement
      */
-    public function retrieveOrderDetails(Order $order)
+    public function retrieveOrderDetails(Order $order): SimpleXMLElement
     {
         return $this->_gateway->retrieveOrderDetails($order->getExternalReference());
     }
@@ -72,10 +66,10 @@ class OrderService extends AbstractService
      * Imports a single order.
      *
      * @param Order $order
-     *
      * @return ImportReport
+     * @throws Exception
      */
-    public function importOrder(Order $order)
+    public function importOrder(Order $order): ImportReport
     {
         $orders = new OrderCollection;
         $orders[] = $order;
@@ -87,12 +81,12 @@ class OrderService extends AbstractService
      * Imports a collection of orders.
      *
      * @param OrderCollection $orders
-     *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportFactor
+     * @return ImportReport
+     * @throws Exception
      */
-    public function importOrders(OrderCollection $orders)
+    public function importOrders(OrderCollection $orders): ImportReport
     {
-        $xml = $this->_getDocumentBuilder()->buildImportOrders(
+        $xml = (string) $this->_getDocumentBuilder()->buildImportOrders(
             array('orders' => $orders)
         )->saveXml();
 

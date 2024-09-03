@@ -12,133 +12,133 @@ class Product extends AbstractEntity
      *
      * @var string
      */
-    protected $_externalReference;
+    protected string $_externalReference;
 
     /**
      * Description.
      *
      * @var string
      */
-    protected $_description;
+    protected string $_description;
 
     /**
      * Barcode.
      *
      * @var string
      */
-    protected $_barcode;
+    protected string $_barcode;
 
     /**
      * Image Reference.
      *
      * @var string
      */
-    protected $_imageReference;
+    protected string $_imageReference;
 
     /**
      * Weight.
      *
      * @var float
      */
-    protected $_weight;
+    protected float $_weight;
 
     /**
      * Weight Units.
      *
      * @var string
      */
-    protected $_weightUnits;
+    protected string $_weightUnits;
 
     /**
      * Physical Store Types.
      *
      * @var string
      */
-    protected $_physicalStorageTypes;
+    protected string $_physicalStorageTypes;
 
     /**
      * Category.
      *
      * @var string
      */
-    protected $_category;
+    protected string $_category;
 
     /**
      * Price Net.
      *
      * @var float
      */
-    protected $_priceNet;
+    protected float $_priceNet;
 
     /**
      * Sellable.
      *
      * @var boolean
      */
-    protected $_sellable;
+    protected bool $_sellable;
 
     /**
      * Price Gross.
      *
      * @var float
      */
-    protected $_priceGross;
+    protected float $_priceGross;
 
     /**
      * Tax.
      *
      * @var float
      */
-    protected $_tax;
+    protected float $_tax;
 
     /**
      * Tax Code.
      *
      * @var string
      */
-    protected $_taxCode;
+    protected string $_taxCode;
 
     /**
      * Currency.
      *
      * @var string
      */
-    protected $_currency;
+    protected string $_currency;
 
     /**
      * Length.
      *
      * @var float
      */
-    protected $_length;
+    protected float $_length;
 
     /**
      * Width.
      *
      * @var float
      */
-    protected $_width;
+    protected float $_width;
 
     /**
      * Height.
      *
      * @var float
      */
-    protected $_height;
+    protected float $_height;
 
     /**
      * Area.
      *
      * @var float
      */
-    protected $_area;
+    protected float $_area;
 
     /**
      * Volume.
      *
      * @var float
      */
-    protected $_volume;
+    protected float $_volume;
 
     /**
      * Constructor.
@@ -155,7 +155,7 @@ class Product extends AbstractEntity
      *
      * @return string
      */
-    public function getExternalReference()
+    public function getExternalReference(): string
     {
         return $this->_externalReference;
     }
@@ -167,7 +167,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setExternalReference(string $externalReference)
+    public function setExternalReference(string $externalReference): Product
     {
         $this->_externalReference = $externalReference;
 
@@ -179,7 +179,7 @@ class Product extends AbstractEntity
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->_description;
     }
@@ -191,7 +191,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setDescription(string $description)
+    public function setDescription(string $description): Product
     {
         $this->_description = $description;
 
@@ -203,7 +203,7 @@ class Product extends AbstractEntity
      *
      * @return string
      */
-    public function getBarcode()
+    public function getBarcode(): string
     {
         return $this->_barcode;
     }
@@ -213,7 +213,7 @@ class Product extends AbstractEntity
      *
      * @return string
      */
-    public function getImageReference()
+    public function getImageReference(): string
     {
         return $this->_imageReference;
     }
@@ -223,7 +223,7 @@ class Product extends AbstractEntity
      *
      * @return float
      */
-    public function getWeight()
+    public function getWeight(): float
     {
         return $this->_weight;
     }
@@ -233,7 +233,7 @@ class Product extends AbstractEntity
      *
      * @return string
      */
-    public function getWeightUnits()
+    public function getWeightUnits(): string
     {
         return $this->_weightUnits;
     }
@@ -243,7 +243,7 @@ class Product extends AbstractEntity
      *
      * @return string
      */
-    public function getPhysicalStorageTypes()
+    public function getPhysicalStorageTypes(): string
     {
         return $this->_physicalStorageTypes;
     }
@@ -253,7 +253,7 @@ class Product extends AbstractEntity
      *
      * @return string
      */
-    public function getCategory()
+    public function getCategory(): string
     {
         return $this->_category;
     }
@@ -263,7 +263,7 @@ class Product extends AbstractEntity
      *
      * @return float
      */
-    public function getPriceNet()
+    public function getPriceNet(): float
     {
         return $this->_priceNet;
     }
@@ -273,7 +273,7 @@ class Product extends AbstractEntity
      *
      * @return boolean
      */
-    public function getSellable()
+    public function getSellable(): bool
     {
         return $this->_sellable;
     }
@@ -283,7 +283,7 @@ class Product extends AbstractEntity
      *
      * @return float
      */
-    public function getPriceGross()
+    public function getPriceGross(): float
     {
         return $this->_priceGross;
     }
@@ -293,7 +293,7 @@ class Product extends AbstractEntity
      *
      * @return float
      */
-    public function getTax()
+    public function getTax(): float
     {
         return $this->_tax;
     }
@@ -303,7 +303,7 @@ class Product extends AbstractEntity
      *
      * @return string
      */
-    public function getTaxCode()
+    public function getTaxCode(): string
     {
         return $this->_taxCode;
     }
@@ -313,7 +313,7 @@ class Product extends AbstractEntity
      *
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->_currency;
     }
@@ -323,7 +323,7 @@ class Product extends AbstractEntity
      *
      * @return float
      */
-    public function getLength()
+    public function getLength(): float
     {
         return $this->_length;
     }
@@ -333,7 +333,7 @@ class Product extends AbstractEntity
      *
      * @return float
      */
-    public function getWidth()
+    public function getWidth(): float
     {
         return $this->_width;
     }
@@ -343,7 +343,7 @@ class Product extends AbstractEntity
      *
      * @return float
      */
-    public function getHeight()
+    public function getHeight(): float
     {
         return $this->_height;
     }
@@ -353,7 +353,7 @@ class Product extends AbstractEntity
      *
      * @return float
      */
-    public function getArea()
+    public function getArea(): float
     {
         return $this->_area;
     }
@@ -363,7 +363,7 @@ class Product extends AbstractEntity
      *
      * @return float
      */
-    public function getVolume()
+    public function getVolume(): float
     {
         return $this->_volume;
     }
@@ -372,10 +372,9 @@ class Product extends AbstractEntity
      * Barcode Setter.
      *
      * @param string $barcode
-     *
      * @return Product
      */
-    public function setBarcode(string $barcode)
+    public function setBarcode(string $barcode): Product
     {
         $this->_barcode = $barcode;
 
@@ -386,10 +385,9 @@ class Product extends AbstractEntity
      * Image Reference Setter.
      *
      * @param string $imageReference
-     *
      * @return Product
      */
-    public function setImageReference(string $imageReference)
+    public function setImageReference(string $imageReference): Product
     {
         $this->_imageReference = $imageReference;
 
@@ -399,11 +397,10 @@ class Product extends AbstractEntity
     /**
      * Net Price Setter.
      *
-     * @param float $priceNet
-     *
+     * @param float $weight
      * @return Product
      */
-    public function setWeight($weight)
+    public function setWeight(float $weight): Product
     {
         $this->_weight = (float) $weight;
 
@@ -417,7 +414,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setWeightUnits(string $weightUnits)
+    public function setWeightUnits(string $weightUnits): Product
     {
         $this->_weightUnits = $weightUnits;
 
@@ -431,7 +428,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setPhysicalStorageTypes(string $physicalStorageTypes)
+    public function setPhysicalStorageTypes(string $physicalStorageTypes): Product
     {
         $this->_physicalStorageTypes = $physicalStorageTypes;
 
@@ -441,11 +438,11 @@ class Product extends AbstractEntity
     /**
      * Category Setter.
      *
-     * @param string $imageReference
+     * @param string $category
      *
      * @return Product
      */
-    public function setCategory($category)
+    public function setCategory(string $category): Product
     {
         $this->_category = $category;
 
@@ -459,7 +456,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setPriceNet(float $priceNet)
+    public function setPriceNet(float $priceNet): Product
     {
         $this->_priceNet = (float) $priceNet;
 
@@ -473,7 +470,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setSellable(bool $sellable)
+    public function setSellable(bool $sellable): Product
     {
         $this->_sellable = (boolean) $sellable;
 
@@ -487,7 +484,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setPriceGross(float $priceGross)
+    public function setPriceGross(float $priceGross): Product
     {
         $this->_priceGross = (float) $priceGross;
 
@@ -497,11 +494,11 @@ class Product extends AbstractEntity
     /**
      * Tax Setter.
      *
-     * @param float $currency
+     * @param float $tax
      *
      * @return Product
      */
-    public function setTax($tax)
+    public function setTax(float $tax): Product
     {
         $this->_tax = (float) $tax;
 
@@ -515,7 +512,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setTaxCode(string $taxCode)
+    public function setTaxCode(string $taxCode): Product
     {
         $this->_taxCode = $taxCode;
 
@@ -525,14 +522,12 @@ class Product extends AbstractEntity
     /**
      * Currency Setter.
      *
-     * @param float $currency
-     *
+     * @param string $currency
      * @return Product
      */
-    public function setCurrency(float $currency)
+    public function setCurrency(string $currency): Product
     {
-        $this->_currency = (float) $currency;
-
+        $this->_currency = $currency;
         return $this;
     }
 
@@ -543,7 +538,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setLength(float $length)
+    public function setLength(float $length): Product
     {
         $this->_length = (float) $length;
 
@@ -557,7 +552,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setWidth(float $width)
+    public function setWidth(float $width): Product
     {
         $this->_width = (float) $width;
 
@@ -571,7 +566,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setHeight(float $height)
+    public function setHeight(float $height): Product
     {
         $this->_height = (float) $height;
 
@@ -585,7 +580,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setArea(float $area)
+    public function setArea(float $area): Product
     {
         $this->_area = (float) $area;
 
@@ -599,7 +594,7 @@ class Product extends AbstractEntity
      *
      * @return Product
      */
-    public function setVolume(float $volume)
+    public function setVolume(float $volume): Product
     {
         $this->_volume = (float) $volume;
 

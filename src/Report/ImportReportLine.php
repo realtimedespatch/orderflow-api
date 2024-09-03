@@ -16,91 +16,91 @@ class ImportReportLine
      *
      * @var string
      */
-    protected $_externalReference;
+    protected string $_externalReference;
 
     /**
      * Type.
      *
      * @var string
      */
-    protected $_type;
+    protected string $_type;
 
     /**
      * Operation.
      *
      * @var string
      */
-    protected $_operation;
+    protected string $_operation;
 
     /**
      * Entity.
      *
      * @var string
      */
-    protected $_entity;
+    protected string $_entity;
 
     /**
      * Entity.
      *
      * @var string
      */
-    protected $_item;
+    protected string $_item;
 
     /**
      * Import Query Timestamp.
      *
      * @var string
      */
-    protected $_queryTime;
+    protected string $_queryTime;
 
     /**
      * Duplicate Message.
      *
      * @var string
      */
-    protected $_duplicateMessage;
+    protected string $_duplicateMessage;
 
     /**
      * Failure Message.
      *
      * @var string
      */
-    protected $_failureMessage;
+    protected string $_failureMessage;
 
     /**
      * Duplicate Detail.
      *
      * @var string
      */
-    protected $_duplicateDetail;
+    protected string $_duplicateDetail;
 
     /**
      * Failure Detail.
      *
      * @var string
      */
-    protected $_failureDetail;
+    protected string $_failureDetail;
 
     /**
      * Is Success?
      *
      * @var boolean
      */
-    protected $_isSuccess;
+    protected bool $_isSuccess;
 
     /**
      * Is Failure?
      *
      * @var boolean
      */
-    protected $_isFailure;
+    protected bool $_isFailure;
 
     /**
      * Is Duplicate?
      *
      * @var boolean
      */
-    protected $_isDuplicate;
+    protected bool $_isDuplicate;
 
     /**
      * Sets a parameter value.
@@ -110,7 +110,7 @@ class ImportReportLine
      *
      * @return string
      */
-    public function setParam(string $key, string $value)
+    public function setParam(string $key, string $value): string
     {
         if (property_exists(get_class($this), '_'.$key)) {
             $this->{'_'.$key} = $value;
@@ -124,7 +124,7 @@ class ImportReportLine
      *
      * @return string
      */
-    public function getExternalReference()
+    public function getExternalReference(): string
     {
         return $this->_externalReference;
     }
@@ -133,10 +133,9 @@ class ImportReportLine
      * External Reference Setter.
      *
      * @param string $externalReference
-     *
      * @return ImportReportLine
      */
-    public function setExternalReference(string $externalReference)
+    public function setExternalReference(string $externalReference): ImportReportLine
     {
         $this->_externalReference = $externalReference;
 
@@ -148,7 +147,7 @@ class ImportReportLine
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->_type;
     }
@@ -157,10 +156,9 @@ class ImportReportLine
      * Type Setter.
      *
      * @param string $type
-     *
      * @return void
      */
-    public function setType(string $type)
+    public function setType(string $type): void
     {
         $this->_type = $type;
     }
@@ -170,7 +168,7 @@ class ImportReportLine
      *
      * @return string
      */
-    public function getOperation()
+    public function getOperation(): string
     {
         return $this->_operation;
     }
@@ -179,10 +177,9 @@ class ImportReportLine
      * Operation Setter.
      *
      * @param string $operation
-     *
      * @return void
      */
-    public function setOperation(string $operation)
+    public function setOperation(string $operation): void
     {
         $this->_operation = $operation;
     }
@@ -192,7 +189,7 @@ class ImportReportLine
      *
      * @return string
      */
-    public function getEntity()
+    public function getEntity(): string
     {
         return $this->_entity;
     }
@@ -201,10 +198,9 @@ class ImportReportLine
      * Entity Setter.
      *
      * @param string $entity
-     *
      * @return void
      */
-    public function setEntity(string $entity)
+    public function setEntity(string $entity): void
     {
         $this->_entity = $entity;
     }
@@ -214,7 +210,7 @@ class ImportReportLine
      *
      * @return string
      */
-    public function getItem()
+    public function getItem(): string
     {
         return $this->_item;
     }
@@ -223,10 +219,9 @@ class ImportReportLine
      * Entity Setter.
      *
      * @param string $item
-     *
      * @return void
      */
-    public function setItem(string $item)
+    public function setItem(string $item): void
     {
         $this->_item = $item;
     }
@@ -236,7 +231,7 @@ class ImportReportLine
      *
      * @return string
      */
-    public function getTimestamp()
+    public function getTimestamp(): string
     {
         return $this->_queryTime;
     }
@@ -248,7 +243,7 @@ class ImportReportLine
      *
      * @return void
      */
-    public function setTimestamp(string $timestamp)
+    public function setTimestamp(string $timestamp): void
     {
         $this->_queryTime = $timestamp;
     }
@@ -258,7 +253,7 @@ class ImportReportLine
      *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): string
     {
         if ($this->_duplicateMessage) {
             return $this->_duplicateMessage;
@@ -275,7 +270,7 @@ class ImportReportLine
      *
      * @return string
      */
-    public function getDetail()
+    public function getDetail(): string
     {
         if ($this->_duplicateDetail) {
             return $this->_duplicateDetail;
@@ -289,11 +284,11 @@ class ImportReportLine
     }
 
     /**
-     * Is this a successfull import?
+     * Is this a successful import?
      *
      * @return boolean
      */
-    public function isSuccess()
+    public function isSuccess(): bool
     {
         return $this->_isSuccess;
     }
@@ -302,20 +297,19 @@ class ImportReportLine
      * Is Success Setter.
      *
      * @param boolean $isSuccess
-     *
      * @return void
      */
-    public function setIsSuccess(bool $isSuccess)
+    public function setIsSuccess(bool $isSuccess): void
     {
         $this->_isSuccess = $isSuccess;
     }
 
     /**
      * Is this a failed import?
-     *
+
      * @return boolean
      */
-    public function isFailure()
+    public function isFailure(): bool
     {
         return $this->_isFailure;
     }
@@ -323,11 +317,10 @@ class ImportReportLine
     /**
      * Is Failure Setter.
      *
-     * @param boolean $isSuccess
-     *
+     * @param boolean $isFailure
      * @return void
      */
-    public function setIsFailure($isFailure)
+    public function setIsFailure(bool $isFailure): void
     {
         $this->_isFailure = $isFailure;
     }
@@ -337,7 +330,7 @@ class ImportReportLine
      *
      * @return boolean
      */
-    public function isDuplicate()
+    public function isDuplicate(): bool
     {
         return $this->_isDuplicate;
     }
@@ -346,10 +339,9 @@ class ImportReportLine
      * Is Duplicate Setter.
      *
      * @param boolean $isDuplicate
-     *
      * @return void
      */
-    public function setIsDuplicate(bool $isDuplicate)
+    public function setIsDuplicate(bool $isDuplicate): void
     {
         $this->_isDuplicate = $isDuplicate;
     }
@@ -359,7 +351,7 @@ class ImportReportLine
      *
      * @return string
      */
-    public function getResult()
+    public function getResult(): string
     {
         if ($this->isSuccess()) {
             return self::RESULT_SUCCESS;

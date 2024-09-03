@@ -12,119 +12,119 @@ abstract class Address extends AbstractEntity
      *
      * @var string
      */
-    protected $_addressLine1;
+    protected string $_addressLine1;
 
     /**
      * Line 2.
      *
      * @var string
      */
-    protected $_addressLine2;
+    protected string $_addressLine2;
 
     /**
      * Line 3.
      *
      * @var string
      */
-    protected $_addressLine3;
+    protected string $_addressLine3;
 
     /**
      * Line 4.
      *
      * @var string
      */
-    protected $_addressLine4;
+    protected string $_addressLine4;
 
     /**
      * Line 5.
      *
      * @var string
      */
-    protected $_addressLine5;
+    protected string $_addressLine5;
 
     /**
      * Line 6.
      *
      * @var string
      */
-    protected $_addressLine6;
+    protected string $_addressLine6;
 
     /**
      * Country Code.
      *
      * @var string
      */
-    protected $_countryCode;
+    protected string $_countryCode;
 
     /**
      * Contact Name.
      *
      * @var string
      */
-    protected $_postCode;
+    protected string $_postCode;
 
     /**
      * Post Code.
      *
      * @var string
      */
-    protected $_contactName;
+    protected string $_contactName;
 
     /**
      * Email Address.
      *
      * @var string
      */
-    protected $_emailAddress;
+    protected string $_emailAddress;
 
     /**
      * Day Phone Number.
      *
      * @var string
      */
-    protected $_dayPhoneNumber;
+    protected string $_dayPhoneNumber;
 
     /**
      * Evening Phone Number.
      *
      * @var string
      */
-    protected $_eveningPhoneNumber;
+    protected string $_eveningPhoneNumber;
 
     /**
      * Mobile Phone Number.
      *
      * @var string
      */
-    protected $_mobilePhoneNumber;
+    protected string $_mobilePhoneNumber;
 
     /**
      * Fax Number.
      *
      * @var string
      */
-    protected $_faxNumber;
+    protected string $_faxNumber;
 
     /**
      * Company Name.
      *
      * @var string
      */
-    protected $_companyName;
+    protected string $_companyName;
 
     /**
      * Returns the type of the address.
      *
      * @return string
      */
-    public abstract function getType();
+    public abstract function getType(): string;
 
     /**
      * Line 1 Getter.
      *
      * @return string
      */
-    public function getAddressLine1()
+    public function getAddressLine1(): string
     {
         return $this->_addressLine1;
     }
@@ -134,7 +134,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getAddressLine2()
+    public function getAddressLine2(): string
     {
         return $this->_addressLine2;
     }
@@ -144,7 +144,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getAddressLine3()
+    public function getAddressLine3(): string
     {
         return $this->_addressLine3;
     }
@@ -154,7 +154,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getAddressLine4()
+    public function getAddressLine4(): string
     {
         return $this->_addressLine4;
     }
@@ -164,7 +164,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getAddressLine5()
+    public function getAddressLine5(): string
     {
         return $this->_addressLine5;
     }
@@ -174,7 +174,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getAddressLine6()
+    public function getAddressLine6(): string
     {
         return $this->_addressLine6;
     }
@@ -184,7 +184,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getCountryCode()
+    public function getCountryCode(): string
     {
         return $this->_countryCode;
     }
@@ -194,7 +194,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getPostCode()
+    public function getPostCode(): string
     {
         return $this->_postCode;
     }
@@ -204,7 +204,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getContactName()
+    public function getContactName(): string
     {
         return $this->_contactName;
     }
@@ -214,7 +214,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getEmailAddress()
+    public function getEmailAddress(): string
     {
         return $this->_emailAddress;
     }
@@ -224,7 +224,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getDayPhoneNumber()
+    public function getDayPhoneNumber(): string
     {
         return $this->_dayPhoneNumber;
     }
@@ -234,7 +234,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getEveningPhoneNumber()
+    public function getEveningPhoneNumber(): string
     {
         return $this->_eveningPhoneNumber;
     }
@@ -244,7 +244,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getMobilePhoneNumber()
+    public function getMobilePhoneNumber(): string
     {
         return $this->_mobilePhoneNumber;
     }
@@ -254,7 +254,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getFaxNumber()
+    public function getFaxNumber(): string
     {
         return $this->_faxNumber;
     }
@@ -264,7 +264,7 @@ abstract class Address extends AbstractEntity
      *
      * @return string
      */
-    public function getCompanyName()
+    public function getCompanyName(): string
     {
         return $this->_companyName;
     }
@@ -276,7 +276,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setAddressLine1(string $addressLine1)
+    public function setAddressLine1(string $addressLine1): Address
     {
         $this->_addressLine1 = $addressLine1;
 
@@ -290,7 +290,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setAddressLine2(string $addressLine2)
+    public function setAddressLine2(string $addressLine2): Address
     {
         $this->_addressLine2 = $addressLine2;
 
@@ -304,7 +304,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setAddressLine3(string $addressLine3)
+    public function setAddressLine3(string $addressLine3): Address
     {
         $this->_addressLine3 = $addressLine3;
 
@@ -318,7 +318,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setAddressLine4(string $addressLine4)
+    public function setAddressLine4(string $addressLine4): Address
     {
         $this->_addressLine4 = $addressLine4;
 
@@ -332,7 +332,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setAddressLine5(string $addressLine5)
+    public function setAddressLine5(string $addressLine5): Address
     {
         $this->_addressLine5 = $addressLine5;
 
@@ -346,7 +346,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setAddressLine6(string $addressLine6)
+    public function setAddressLine6(string $addressLine6): Address
     {
         $this->_addressLine6 = $addressLine6;
 
@@ -360,7 +360,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setCountryCode(string $countryCode)
+    public function setCountryCode(string $countryCode): Address
     {
         $this->_countryCode = $countryCode;
 
@@ -374,7 +374,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setPostCode(string $postCode)
+    public function setPostCode(string $postCode): Address
     {
         $this->_postCode = $postCode;
 
@@ -388,7 +388,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setContactName(string $contactName)
+    public function setContactName(string $contactName): Address
     {
         $this->_contactName = $contactName;
 
@@ -402,7 +402,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setEmailAddress(string $emailAddress)
+    public function setEmailAddress(string $emailAddress): Address
     {
         $this->_emailAddress = $emailAddress;
 
@@ -416,7 +416,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setDayPhoneNumber(string $dayPhoneNumber)
+    public function setDayPhoneNumber(string $dayPhoneNumber): Address
     {
         $this->_dayPhoneNumber = $dayPhoneNumber;
 
@@ -430,7 +430,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setEveningPhoneNumber(string $eveningPhoneNumber)
+    public function setEveningPhoneNumber(string $eveningPhoneNumber): Address
     {
         $this->_eveningPhoneNumber = $eveningPhoneNumber;
 
@@ -444,7 +444,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setMobilePhoneNumber(string $mobilePhoneNumber)
+    public function setMobilePhoneNumber(string $mobilePhoneNumber): Address
     {
         $this->_mobilePhoneNumber = $mobilePhoneNumber;
 
@@ -458,7 +458,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setFaxNumber(string $faxNumber)
+    public function setFaxNumber(string $faxNumber): Address
     {
         $this->_faxNumber = $faxNumber;
 
@@ -472,7 +472,7 @@ abstract class Address extends AbstractEntity
      *
      * @return Address
      */
-    public function setCompanyName(string $companyName)
+    public function setCompanyName(string $companyName): Address
     {
         $this->_companyName = $companyName;
 
@@ -481,10 +481,10 @@ abstract class Address extends AbstractEntity
 
     /**
      * Collapses the address.
-     *
+     * @param int $index
      * @return void
      */
-    public function collapse($index = 1)
+    public function collapse(int $index = 1): void
     {
         if ($index > 6) {
             return;

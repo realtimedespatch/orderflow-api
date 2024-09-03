@@ -13,12 +13,11 @@ class ReturnService extends AbstractService
 {
     /**
      * Imports a single return.
-     *
      * @param RMA $return
-     *
      * @return ImportReport
+     * @throws \Exception
      */
-    public function importReturn(RMA $return)
+    public function importReturn(RMA $return): ImportReport
     {
         $returns = new RMACollection;
         $returns[] = $return;
@@ -30,12 +29,12 @@ class ReturnService extends AbstractService
      * Imports a collection of returns.
      *
      * @param RMACollection $returns
-     *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportFactor
+     * @return ImportReport
+     * @throws \Exception
      */
-    public function importReturns(RMACollection $returns)
+    public function importReturns(RMACollection $returns): ImportReport
     {
-        $xml = $this->_getDocumentBuilder()->buildImportReturns(
+        $xml = (string) $this->_getDocumentBuilder()->buildImportReturns(
             array('returns' => $returns)
         )->saveXml();
 

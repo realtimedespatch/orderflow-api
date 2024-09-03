@@ -12,126 +12,126 @@ class Shipment extends AbstractEntity
      *
      * @var string
      */
-    protected $_externalReference;
+    protected string $_externalReference;
 
     /**
      * Shipment State.
      *
      * @var string
      */
-    protected $_state;
+    protected string $_state;
 
     /**
      * Shipment State.
      *
      * @var string
      */
-    protected $_earliestShipDate;
+    protected string $_earliestShipDate;
 
     /**
      * Shipment Site.
      *
      * @var string
      */
-    protected $_site;
+    protected string $_site;
 
     /**
      * Shipment Priority.
      *
      * @var string
      */
-    protected $_priority;
+    protected string $_priority;
 
     /**
      * Shipment Priority Name.
      *
      * @var string
      */
-    protected $_priorityName;
+    protected string $_priorityName;
 
     /**
      * Shipment Weight.
      *
      * @var float
      */
-    protected $_weight;
+    protected float $_weight;
 
     /**
      * Shipment Weight Units.
      *
      * @var string
      */
-    protected $_weightUnits;
+    protected string $_weightUnits;
 
     /**
      * Shipment Address.
      *
      * @var ShipmentAddress
      */
-    protected $_address;
+    protected ShipmentAddress $_address;
 
     /**
      * Shipment Courier.
      *
      * @var string
      */
-    protected $_courier;
+    protected string $_courier;
 
     /**
      * Delivery Suggestion Code.
      *
      * @var string
      */
-    protected $_deliverySuggestionCode;
+    protected string $_deliverySuggestionCode;
 
     /**
      * Delivery Suggestion Name.
      *
      * @var string
      */
-    protected $_deliverySuggestionName;
+    protected string $_deliverySuggestionName;
 
     /**
      * Picking Model.
      *
      * @var string
      */
-    protected $_pickingMode;
+    protected string $_pickingMode;
 
     /**
      * Despatch Comment.
      *
      * @var string
      */
-    protected $_despatchComment;
+    protected string $_despatchComment;
 
     /**
      * Despatch Reference.
      *
      * @var string
      */
-    protected $_despatchReference;
+    protected string $_despatchReference;
 
     /**
      * Delivery Instruction.
      *
      * @var string
      */
-    protected $_deliveryInstruction;
+    protected string $_deliveryInstruction;
 
     /**
      * Order Reference.
      *
      * @var string
      */
-    protected $_orderItem = 'entity:order';
+    protected string $_orderItem = 'entity:order';
 
     /**
      * External Reference Getter.
      *
      * @return string
      */
-    public function getExternalReference()
+    public function getExternalReference(): string
     {
         return $this->_externalReference;
     }
@@ -141,7 +141,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->_state;
     }
@@ -151,7 +151,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getEarliestShipDate()
+    public function getEarliestShipDate(): string
     {
         return $this->_earliestShipDate;
     }
@@ -161,7 +161,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getSite()
+    public function getSite(): string
     {
         return $this->_site;
     }
@@ -171,7 +171,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getPriority()
+    public function getPriority(): string
     {
         return $this->_priority;
     }
@@ -181,7 +181,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getPriorityName()
+    public function getPriorityName(): string
     {
         return $this->_priorityName;
     }
@@ -191,7 +191,7 @@ class Shipment extends AbstractEntity
      *
      * @return float
      */
-    public function getWeight()
+    public function getWeight(): float
     {
         return $this->_weight;
     }
@@ -201,7 +201,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getWeightUnits()
+    public function getWeightUnits(): string
     {
         return $this->_weightUnits;
     }
@@ -211,7 +211,7 @@ class Shipment extends AbstractEntity
      *
      * @return ShipmentAddress
      */
-    public function getAddress()
+    public function getAddress(): ShipmentAddress
     {
         return $this->_address;
     }
@@ -221,7 +221,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getCourier()
+    public function getCourier(): string
     {
         return $this->_courier;
     }
@@ -231,7 +231,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getDeliverySuggestionCode()
+    public function getDeliverySuggestionCode(): string
     {
         return $this->_deliverySuggestionCode;
     }
@@ -241,7 +241,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getDeliverySuggestionName()
+    public function getDeliverySuggestionName(): string
     {
         return $this->_deliverySuggestionName;
     }
@@ -251,7 +251,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getPickingMode()
+    public function getPickingMode(): string
     {
         return $this->_pickingMode;
     }
@@ -261,7 +261,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getDespatchComment()
+    public function getDespatchComment(): string
     {
         return $this->_despatchComment;
     }
@@ -271,7 +271,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getDespatchReference()
+    public function getDespatchReference(): string
     {
         return $this->_despatchReference;
     }
@@ -281,7 +281,7 @@ class Shipment extends AbstractEntity
      *
      * @return string
      */
-    public function getDeliveryInstruction()
+    public function getDeliveryInstruction(): string
     {
         return $this->_deliveryInstruction;
     }
@@ -293,7 +293,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setExternalReference(string $externalReference)
+    public function setExternalReference(string $externalReference): Shipment
     {
         $this->_externalReference = $externalReference;
 
@@ -307,7 +307,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setState(string $state)
+    public function setState(string $state): Shipment
     {
         $this->_state = $state;
 
@@ -321,7 +321,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setEarliestShipDate(string $earliestShipDate)
+    public function setEarliestShipDate(string $earliestShipDate): Shipment
     {
         $this->_earliestShipDate = $earliestShipDate;
 
@@ -335,7 +335,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setSite(string $site)
+    public function setSite(string $site): Shipment
     {
         $this->_site = $site;
 
@@ -349,7 +349,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setPriority(string $priority)
+    public function setPriority(string $priority): Shipment
     {
         $this->_priority = $priority;
 
@@ -363,7 +363,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setPriorityName(string $priorityName)
+    public function setPriorityName(string $priorityName): Shipment
     {
         $this->_priorityName = $priorityName;
 
@@ -377,7 +377,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setWeight(float $weight)
+    public function setWeight(float $weight): Shipment
     {
         $this->_weight = (float) $weight;
 
@@ -391,7 +391,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setWeightUnits(string $weightUnits)
+    public function setWeightUnits(string $weightUnits): Shipment
     {
         $this->_weightUnits = $weightUnits;
 
@@ -405,7 +405,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setAddress(ShipmentAddress $address)
+    public function setAddress(ShipmentAddress $address): Shipment
     {
         $this->_address = $address;
 
@@ -419,7 +419,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setCourier(string $courier)
+    public function setCourier(string $courier): Shipment
     {
         $this->_courier = $courier;
 
@@ -433,7 +433,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setDeliverySuggestionCode(string $deliverySuggestionCode)
+    public function setDeliverySuggestionCode(string $deliverySuggestionCode): Shipment
     {
         $this->_deliverySuggestionCode = $deliverySuggestionCode;
 
@@ -447,7 +447,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setDeliverySuggestionName(string $deliverySuggestionName)
+    public function setDeliverySuggestionName(string $deliverySuggestionName): Shipment
     {
         $this->_deliverySuggestionName = $deliverySuggestionName;
 
@@ -461,7 +461,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setPickingMode(string $pickingMode)
+    public function setPickingMode(string $pickingMode): Shipment
     {
         $this->_pickingMode = $pickingMode;
 
@@ -475,7 +475,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setDespatchComment(string $despatchComment)
+    public function setDespatchComment(string $despatchComment): Shipment
     {
         $this->_despatchComment = $despatchComment;
 
@@ -489,7 +489,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setDespatchReference(string $despatchReference)
+    public function setDespatchReference(string $despatchReference): Shipment
     {
         $this->_despatchReference = $despatchReference;
 
@@ -503,7 +503,7 @@ class Shipment extends AbstractEntity
      *
      * @return Shipment
      */
-    public function setDeliveryInstruction(string $deliveryInstruction)
+    public function setDeliveryInstruction(string $deliveryInstruction): Shipment
     {
         $this->_deliveryInstruction = $deliveryInstruction;
 

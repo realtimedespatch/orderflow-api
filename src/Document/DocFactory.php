@@ -20,14 +20,11 @@ class DocFactory
      * Creates a new request builder instance
      *
      * @param string $type
-     * @param array $options
-     *
+     * @param array<string,mixed> $params
      * @return DOMDocument
      * @throws Exception
-     * @throws Exception
-     * @throws Exception
      */
-    public function build(string $type, array $params = array())
+    public function build(string $type, array $params = array()): DOMDocument
     {
         $class = "\SixBySix\RealtimeDespatch\Document\\".$type."DocBuilderType";
 
@@ -35,7 +32,9 @@ class DocFactory
             throw new Exception('Builder does not exist');
         }
 
-        $builder = new DocBuilder(new $class($params));
+        /** @var DocBuilderType $class */
+        $docBuilderType = new $class($params);
+        $builder = new DocBuilder($docBuilderType);
 
         return $builder->build();
     }
@@ -43,14 +42,11 @@ class DocFactory
     /**
      * Builds a product update document.
      *
-     * @param array $params
-     *
+     * @param array<string,mixed> $params
      * @return DOMDocument
      * @throws Exception
-     * @throws Exception
-     * @throws Exception
      */
-    public function buildProductUpdate(array $params = array())
+    public function buildProductUpdate(array $params = array()): DOMDocument
     {
         return $this->build(
             self::REQUEST_BUILDER_TYPE_UPDATE_PRODUCTS,
@@ -61,14 +57,11 @@ class DocFactory
     /**
      * Builds a product import document.
      *
-     * @param array $params
-     *
+     * @param array<string,mixed> $params
      * @return DOMDocument
      * @throws Exception
-     * @throws Exception
-     * @throws Exception
      */
-    public function buildProductImport(array $params = array())
+    public function buildProductImport(array $params = array()): DOMDocument
     {
         return $this->build(
             self::REQUEST_BUILDER_TYPE_IMPORT_PRODUCTS,
@@ -79,14 +72,11 @@ class DocFactory
     /**
      * Builds a product merge document.
      *
-     * @param array $params
-     *
+     * @param array<string,mixed> $params
      * @return DOMDocument
      * @throws Exception
-     * @throws Exception
-     * @throws Exception
      */
-    public function buildProductMerge(array $params = array())
+    public function buildProductMerge(array $params = array()): DOMDocument
     {
         return $this->build(
             self::REQUEST_BUILDER_TYPE_MERGE_PRODUCTS,
@@ -97,14 +87,11 @@ class DocFactory
     /**
      * Builds an import orders document.
      *
-     * @param array $params
-     *
+     * @param array<string,mixed> $params
      * @return DOMDocument
      * @throws Exception
-     * @throws Exception
-     * @throws Exception
      */
-    public function buildImportOrders(array $params = array())
+    public function buildImportOrders(array $params = array()): DOMDocument
     {
         return $this->build(
             self::REQUEST_BUILDER_TYPE_IMPORT_ORDERS,
@@ -115,14 +102,11 @@ class DocFactory
     /**
      * Builds an import returns document.
      *
-     * @param array $params
-     *
+     * @param array<string,mixed> $params
      * @return DOMDocument
      * @throws Exception
-     * @throws Exception
-     * @throws Exception
      */
-    public function buildImportReturns(array $params = array())
+    public function buildImportReturns(array $params = array()): DOMDocument
     {
         return $this->build(
             self::REQUEST_BUILDER_TYPE_IMPORT_RETURNS,

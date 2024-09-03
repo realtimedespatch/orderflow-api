@@ -14,7 +14,7 @@ class ImportProductsDocBuilderType extends DocBuilderType
      * {@inheritdoc}
      * @throws \DOMException
      */
-    public function build()
+    public function build(): DOMDocument
     {
         $this->_doc   = new DOMDocument('1.0', 'UTF-8');
         $this->_root  = $this->_doc->appendChild($this->_doc->createElement('imports'));
@@ -30,20 +30,16 @@ class ImportProductsDocBuilderType extends DocBuilderType
      * Builds the individual import lines.
      *
      * @param Product $product
-     *
      * @return void
      * @throws \DOMException
-     * @throws \DOMException
-     * @throws \DOMException
      */
-    protected function _buildImport(Product $product)
+    protected function _buildImport(Product $product): void
     {
-        $import = $this->_root->appendChild($this->_doc->createElement('import'));
-
+        $import = $this->_doc->createElement('import');
         $import->setAttribute('type', 'product');
         $import->setAttribute('operation', 'insert');
         $import->setAttribute('externalReference', $product->getExternalReference());
-
+        $this->_root->appendChild($import);
         $content = '';
 
         foreach ($product->toArray(true) as $key => $value) {

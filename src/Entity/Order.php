@@ -10,191 +10,192 @@ class Order extends AbstractEntity
     /**
      * Order Lines.
      *
-     * @var array
+     * @var array<int,OrderLine>
      */
-    protected $_lines;
+    protected array $_lines;
 
     /**
      * External Reference.
      *
      * @var string
      */
-    protected $_externalReference;
+    protected string $_externalReference;
 
     /**
      * Order State.
      *
      * @var string
      */
-    protected $_state;
+    protected string $_state;
 
     /**
      * Payment Gateway Identifier.
      *
      * @var string
      */
-    protected $_paymentGatewayIdentifier;
+    protected string $_paymentGatewayIdentifier;
 
     /**
      * Payment Tx Information.
      *
      * @var string
      */
-    protected $_paymentTransactionInfo;
+    protected string $_paymentTransactionInfo;
 
     /**
      * Customer Comment.
      *
      * @var string
      */
-    protected $_customerComment;
+    protected string $_customerComment;
 
     /**
      * Total Net Price.
      *
      * @var float
      */
-    protected $_totalPriceNet;
+    protected float $_totalPriceNet;
 
     /**
      * Total Gross Price.
      *
      * @var float
      */
-    protected $_totalPriceGross;
+    protected float $_totalPriceGross;
 
     /**
      * Total Tax Price.
      *
      * @var float
      */
-    protected $_totalPriceTax;
+    protected float $_totalPriceTax;
 
     /**
      * Total Tax.
      *
      * @var float
      */
-    protected $_totalTax;
+    protected float $_totalTax;
 
     /**
      * Tax Code.
      *
      * @var string
      */
-    protected $_taxCode;
+    protected string $_taxCode;
 
     /**
      * Shipping Net Price.
      *
      * @var float
      */
-    protected $_shippingPriceNet;
+    protected float $_shippingPriceNet;
+
 
     /**
      * Shipping Gross Price.
      *
      * @var float
      */
-    protected $_shippingPriceGross;
+    protected float $_shippingPriceGross;
 
     /**
      * Shipping Tax.
      *
      * @var float
      */
-    protected $_shippingTax;
+    protected float $_shippingTax;
 
     /**
      * Shipping Tax Code.
      *
      * @var string
      */
-    protected $_shippingTaxCode;
+    protected string $_shippingTaxCode;
 
     /**
      * Goods Net Price.
      *
      * @var float
      */
-    protected $_goodsPriceNet;
+    protected float $_goodsPriceNet;
 
     /**
      * Goods Gross Price.
      *
      * @var float
      */
-    protected $_goodsPriceGross;
+    protected float $_goodsPriceGross;
 
     /**
      * Goods Tax.
      *
      * @var float
      */
-    protected $_goodsTax;
+    protected float $_goodsTax;
 
     /**
      * Goods Tax Code.
      *
      * @var string
      */
-    protected $_goodsTaxCode;
+    protected string $_goodsTaxCode;
 
     /**
      * Currency Code.
      *
      * @var string
      */
-    protected $_currency;
+    protected string $_currency;
 
     /**
      * Currency Units.
      *
      * @var string
      */
-    protected $_currencyUnits;
+    protected string $_currencyUnits;
 
     /**
      * Promotion Code.
      *
      * @var string
      */
-    protected $_promotionCode;
+    protected string $_promotionCode;
 
     /**
      * Promotion Description.
      *
      * @var string
      */
-    protected $_promotionDescription;
+    protected string $_promotionDescription;
 
     /**
      * Order Source.
      *
      * @var string
      */
-    protected $_source;
+    protected string $_source;
 
     /**
      * Delivery Address.
      *
      * @var DeliveryAddress
      */
-    protected $_deliveryAddress;
+    protected DeliveryAddress $_deliveryAddress;
 
     /**
      * Invoice Address.
      *
      * @var InvoiceAddress
      */
-    protected $_invoiceAddress;
+    protected InvoiceAddress $_invoiceAddress;
 
     /**
      * Shipment.
      *
      * @var Shipment
      */
-    protected $_shipment;
+    protected Shipment $_shipment;
 
     /**
      * Constructor.
@@ -209,25 +210,21 @@ class Order extends AbstractEntity
 
     /**
      * Returns the current report lines.
-     *
-     * @return array
+     * @return array<int,OrderLine>
      */
-    public function getLines()
+    public function getLines(): array
     {
         return $this->_lines;
     }
 
     /**
      * Adds a new line to the report.
-     *
      * @param OrderLine $line
-     *
      * @return Order
      */
-    public function addLine(OrderLine $line)
+    public function addLine(OrderLine $line): Order
     {
         $this->_lines[] = $line;
-
         return $this;
     }
 
@@ -236,7 +233,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getExternalReference()
+    public function getExternalReference(): string
     {
         return $this->_externalReference;
     }
@@ -246,7 +243,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->_state;
     }
@@ -256,7 +253,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getPaymentGatewayIdentifier()
+    public function getPaymentGatewayIdentifier(): string
     {
         return $this->_paymentGatewayIdentifier;
     }
@@ -266,7 +263,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getPaymentTransactionInfo()
+    public function getPaymentTransactionInfo(): string
     {
         return $this->_paymentTransactionInfo;
     }
@@ -276,7 +273,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getCustomerComment()
+    public function getCustomerComment(): string
     {
         return $this->_customerComment;
     }
@@ -286,7 +283,7 @@ class Order extends AbstractEntity
      *
      * @return float
      */
-    public function getTotalPriceNet()
+    public function getTotalPriceNet(): float
     {
         return $this->_totalPriceNet;
     }
@@ -296,7 +293,7 @@ class Order extends AbstractEntity
      *
      * @return float
      */
-    public function getTotalPriceGross()
+    public function getTotalPriceGross(): float
     {
         return $this->_totalPriceGross;
     }
@@ -306,7 +303,7 @@ class Order extends AbstractEntity
      *
      * @return float
      */
-    public function getTotalPriceTax()
+    public function getTotalPriceTax(): float
     {
         return $this->_totalPriceTax;
     }
@@ -316,7 +313,7 @@ class Order extends AbstractEntity
      *
      * @return float
      */
-    public function getTotalTax()
+    public function getTotalTax(): float
     {
         return $this->_totalTax;
     }
@@ -326,7 +323,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getTaxCode()
+    public function getTaxCode(): string
     {
         return $this->_taxCode;
     }
@@ -336,7 +333,7 @@ class Order extends AbstractEntity
      *
      * @return float
      */
-    public function getShippingPriceNet()
+    public function getShippingPriceNet(): float
     {
         return $this->_shippingPriceNet;
     }
@@ -346,7 +343,7 @@ class Order extends AbstractEntity
      *
      * @return float
      */
-    public function getShippingPriceGross()
+    public function getShippingPriceGross(): float
     {
         return $this->_shippingPriceGross;
     }
@@ -356,7 +353,7 @@ class Order extends AbstractEntity
      *
      * @return float
      */
-    public function getShippingTax()
+    public function getShippingTax(): float
     {
         return $this->_shippingTax;
     }
@@ -366,7 +363,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getShippingTaxCode()
+    public function getShippingTaxCode(): string
     {
         return $this->_shippingTaxCode;
     }
@@ -376,7 +373,7 @@ class Order extends AbstractEntity
      *
      * @return float
      */
-    public function getGoodsPriceNet()
+    public function getGoodsPriceNet(): float
     {
         return $this->_goodsPriceNet;
     }
@@ -386,7 +383,7 @@ class Order extends AbstractEntity
      *
      * @return float
      */
-    public function getGoodsPriceGross()
+    public function getGoodsPriceGross(): float
     {
         return $this->_goodsPriceGross;
     }
@@ -396,17 +393,16 @@ class Order extends AbstractEntity
      *
      * @return float
      */
-    public function getGoodsTax()
+    public function getGoodsTax(): float
     {
         return $this->_goodsTax;
     }
 
     /**
      * Goods Tax Code Getter.
-     *
      * @return string
      */
-    public function getGoodsTaxCode()
+    public function getGoodsTaxCode(): string
     {
         return $this->_goodsTaxCode;
     }
@@ -416,7 +412,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->_currency;
     }
@@ -426,7 +422,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getCurrencyUnits()
+    public function getCurrencyUnits(): string
     {
         return $this->_currencyUnits;
     }
@@ -436,7 +432,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getPromotionCode()
+    public function getPromotionCode(): string
     {
         return $this->_promotionCode;
     }
@@ -446,7 +442,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getPromotionDescription()
+    public function getPromotionDescription(): string
     {
         return $this->_promotionDescription;
     }
@@ -456,7 +452,7 @@ class Order extends AbstractEntity
      *
      * @return string
      */
-    public function getSource()
+    public function getSource(): string
     {
         return $this->_source;
     }
@@ -466,7 +462,7 @@ class Order extends AbstractEntity
      *
      * @return DeliveryAddress
      */
-    public function getDeliveryAddress()
+    public function getDeliveryAddress(): DeliveryAddress
     {
         return $this->_deliveryAddress;
     }
@@ -476,7 +472,7 @@ class Order extends AbstractEntity
      *
      * @return InvoiceAddress
      */
-    public function getInvoiceAddress()
+    public function getInvoiceAddress(): InvoiceAddress
     {
         return $this->_invoiceAddress;
     }
@@ -486,7 +482,7 @@ class Order extends AbstractEntity
      *
      * @return Shipment
      */
-    public function getShipment()
+    public function getShipment(): Shipment
     {
         return $this->_shipment;
     }
@@ -498,7 +494,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setExternalReference(string $externalReference)
+    public function setExternalReference(string $externalReference): Order
     {
         $this->_externalReference = $externalReference;
 
@@ -512,7 +508,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setState(string $state)
+    public function setState(string $state): Order
     {
         $this->_state = $state;
 
@@ -526,7 +522,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setPaymentGatewayIdentifier(string $paymentGatewayIdentifier)
+    public function setPaymentGatewayIdentifier(string $paymentGatewayIdentifier): Order
     {
         $this->_paymentGatewayIdentifier = $paymentGatewayIdentifier;
 
@@ -540,7 +536,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setPaymentTransactionInfo(string $paymentTransactionInfo)
+    public function setPaymentTransactionInfo(string $paymentTransactionInfo): Order
     {
         $this->_paymentTransactionInfo = $paymentTransactionInfo;
 
@@ -554,7 +550,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setCustomerComment(string $customerComment)
+    public function setCustomerComment(string $customerComment): Order
     {
         $this->_customerComment = $customerComment;
 
@@ -568,7 +564,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setTotalPriceNet(float $totalPriceNet)
+    public function setTotalPriceNet(float $totalPriceNet): Order
     {
         $this->_totalPriceNet = (float) $totalPriceNet;
 
@@ -582,7 +578,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setTotalPriceGross(float $totalPriceGross)
+    public function setTotalPriceGross(float $totalPriceGross): Order
     {
         $this->_totalPriceGross = (float) $totalPriceGross;
 
@@ -596,7 +592,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setTotalPriceTax(float $totalPriceTax)
+    public function setTotalPriceTax(float $totalPriceTax): Order
     {
         $this->_totalPriceTax = (float) $totalPriceTax;
 
@@ -610,7 +606,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setTotalTax(float $totalTax)
+    public function setTotalTax(float $totalTax): Order
     {
         $this->_totalTax = (float) $totalTax;
 
@@ -624,9 +620,9 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setTaxCode(string $taxCode)
+    public function setTaxCode(string $taxCode): Order
     {
-        $this->_taxCode = (float) $taxCode;
+        $this->_taxCode = $taxCode;
 
         return $this;
     }
@@ -638,7 +634,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setShippingPriceNet(float $shippingPriceNet)
+    public function setShippingPriceNet(float $shippingPriceNet): Order
     {
         $this->_shippingPriceNet = (float) $shippingPriceNet;
 
@@ -652,7 +648,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setShippingPriceGross(float $shippingPriceGross)
+    public function setShippingPriceGross(float $shippingPriceGross): Order
     {
         $this->_shippingPriceGross = (float) $shippingPriceGross;
 
@@ -666,7 +662,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setShippingTax(float $shippingTax)
+    public function setShippingTax(float $shippingTax): Order
     {
         $this->_shippingTax = (float) $shippingTax;
 
@@ -680,7 +676,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setShippingTaxCode(string $shippingTaxCode)
+    public function setShippingTaxCode(string $shippingTaxCode): Order
     {
         $this->_shippingTaxCode = $shippingTaxCode;
 
@@ -694,7 +690,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setGoodsPriceNet(float $goodsPriceNet)
+    public function setGoodsPriceNet(float $goodsPriceNet): Order
     {
         $this->_goodsPriceNet = (float) $goodsPriceNet;
 
@@ -708,7 +704,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setGoodsPriceGross(float $goodsPriceGross)
+    public function setGoodsPriceGross(float $goodsPriceGross): Order
     {
         $this->_goodsPriceGross = (float) $goodsPriceGross;
 
@@ -722,7 +718,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setGoodsTax(float $goodsTax)
+    public function setGoodsTax(float $goodsTax): Order
     {
         $this->_goodsTax = (float) $goodsTax;
 
@@ -736,7 +732,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setGoodsTaxCode(string $goodsTaxCode)
+    public function setGoodsTaxCode(string $goodsTaxCode): Order
     {
         $this->_goodsTaxCode = $goodsTaxCode;
 
@@ -750,7 +746,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setCurrency(string $currency)
+    public function setCurrency(string $currency): Order
     {
         $this->_currency = $currency;
 
@@ -764,7 +760,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setCurrencyUnits(string $currencyUnits)
+    public function setCurrencyUnits(string $currencyUnits): Order
     {
         $this->_currencyUnits = $currencyUnits;
 
@@ -778,7 +774,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setPromotionCode(string $promotionCode)
+    public function setPromotionCode(string $promotionCode): Order
     {
         $this->_promotionCode = $promotionCode;
 
@@ -792,7 +788,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setPromotionDescription(string $promotionDescription)
+    public function setPromotionDescription(string $promotionDescription): Order
     {
         $this->_promotionDescription = $promotionDescription;
 
@@ -806,7 +802,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setSource(string $source)
+    public function setSource(string $source): Order
     {
         $this->_source = $source;
 
@@ -820,7 +816,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setDeliveryAddress(DeliveryAddress $deliveryAddress)
+    public function setDeliveryAddress(DeliveryAddress $deliveryAddress): Order
     {
         $this->_deliveryAddress = $deliveryAddress;
 
@@ -834,7 +830,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setInvoiceAddress(InvoiceAddress $invoiceAddress)
+    public function setInvoiceAddress(InvoiceAddress $invoiceAddress): Order
     {
         $this->_invoiceAddress = $invoiceAddress;
 
@@ -848,7 +844,7 @@ class Order extends AbstractEntity
      *
      * @return Order
      */
-    public function setShipment(Shipment $shipment)
+    public function setShipment(Shipment $shipment): Order
     {
         $this->_shipment = $shipment;
 

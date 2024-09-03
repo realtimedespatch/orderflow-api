@@ -4,6 +4,7 @@ namespace SixBySix\RealtimeDespatch\Document;
 
 use DOMDocument;
 use SixBySix\RealtimeDespatch\Entity\RMA;
+use SixBySix\RealtimeDespatch\Entity\RMALine;
 
 /**
  * Import Returns Doc Builder Type.
@@ -14,7 +15,7 @@ class ImportReturnsDocBuilderType extends DocBuilderType
      * {@inheritdoc}
      * @throws \DOMException
      */
-    public function build()
+    public function build(): DOMDocument
     {
         $this->_doc  = new DOMDocument('1.0', 'UTF-8');
         $this->_root = $this->_doc->appendChild($this->_doc->createElement('imports'));
@@ -30,19 +31,16 @@ class ImportReturnsDocBuilderType extends DocBuilderType
      * Builds an individual import line.
      *
      * @param RMA $return
-     *
      * @return void
      * @throws \DOMException
-     * @throws \DOMException
-     * @throws \DOMException
      */
-    protected function _buildImport(RMA $return)
+    protected function _buildImport(RMA $return): void
     {
-        $import = $this->_root->appendChild($this->_doc->createElement('import'));
-
+        $import = $this->_doc->createElement('import');
         $import->setAttribute('type', 'return');
         $import->setAttribute('operation', 'insert');
         $import->setAttribute('externalReference', $return->getExternalReference());
+        $this->_root->appendChild($import);
 
         $content = $this->_buildParams($return->toArray(true));
         $content .= $this->_buildReturnLines($return->getLines());
@@ -52,12 +50,10 @@ class ImportReturnsDocBuilderType extends DocBuilderType
 
     /**
      * Builds the return params.
-     *
-     * @param array $params
-     *
+     * @param array<string,mixed> $params
      * @return string
      */
-    protected function _buildParams(array $params)
+    protected function _buildParams(array $params): string
     {
         $content = '';
 
@@ -75,11 +71,10 @@ class ImportReturnsDocBuilderType extends DocBuilderType
     /**
      * Builds the return lines.
      *
-     * @param array $returnLines
-     *
+     * @param array<int,RMALine> $returnLines
      * @return string
      */
-    protected function _buildReturnLines(array $returnLines)
+    protected function _buildReturnLines(array $returnLines): string
     {
         $content = '';
 

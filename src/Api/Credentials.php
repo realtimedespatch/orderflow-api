@@ -12,42 +12,42 @@ class Credentials
      *
      * @var string
      */
-    protected $_endpoint;
+    protected string $_endpoint;
 
     /**
      * Channel.
      *
      * @var string
      */
-    protected $_channel;
+    protected string $_channel;
 
     /**
      * Organisation.
      *
      * @var string
      */
-    protected $_organisation;
+    protected string $_organisation;
 
     /**
      * Username.
      *
      * @var string
      */
-    protected $_username;
+    protected string $_username;
 
     /**
      * Password.
      *
      * @var string
      */
-    protected $_password;
+    protected string $_password;
 
     /**
      * Endpoint Setter.
      *
      * @param string $endpoint
      */
-    public function setEndpoint(string $endpoint)
+    public function setEndpoint(string $endpoint): void
     {
         $this->_endpoint = $endpoint;
     }
@@ -57,7 +57,7 @@ class Credentials
      *
      * @return string|null
      */
-    public function getEndpoint()
+    public function getEndpoint(): ?string
     {
         return $this->_endpoint;
     }
@@ -67,7 +67,7 @@ class Credentials
      *
      * @param string $channel
      */
-    public function setChannel(string $channel)
+    public function setChannel(string $channel): void
     {
         $this->_channel = $channel;
     }
@@ -77,7 +77,7 @@ class Credentials
      *
      * @return string|null
      */
-    public function getChannel()
+    public function getChannel(): ?string
     {
         return $this->_channel;
     }
@@ -87,7 +87,7 @@ class Credentials
      *
      * @param string $organisation
      */
-    public function setOrganisation(string $organisation)
+    public function setOrganisation(string $organisation): void
     {
         $this->_organisation = $organisation;
     }
@@ -97,7 +97,7 @@ class Credentials
      *
      * @return string|null
      */
-    public function getOrganisation()
+    public function getOrganisation(): ?string
     {
         return $this->_organisation;
     }
@@ -107,7 +107,7 @@ class Credentials
      *
      * @param string $username
      */
-    public function setUsername(string $username)
+    public function setUsername(string $username): void
     {
         $this->_username = $username;
     }
@@ -117,7 +117,7 @@ class Credentials
      *
      * @return string|null
      */
-    public function getUsername()
+    public function getUsername(): ?string
     {
         return $this->_username;
     }
@@ -127,7 +127,7 @@ class Credentials
      *
      * @param string $password
      */
-    public function setPassword(string $password)
+    public function setPassword(string $password): void
     {
         $this->_password = $password;
     }
@@ -137,7 +137,7 @@ class Credentials
      *
      * @return string|null
      */
-    public function getPassword()
+    public function getPassword(): ?string
     {
         return $this->_password;
     }
@@ -145,9 +145,9 @@ class Credentials
     /**
      * Returns the credentials as an array.
      *
-     * @return array
+     * @return array<string,string>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $data = array();
 

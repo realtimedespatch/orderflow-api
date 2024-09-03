@@ -14,74 +14,70 @@ class RMA extends AbstractEntity
      *
      * @var string
      */
-    protected $_externalReference;
+    protected string $_externalReference;
 
     /**
      * Return Lines.
      *
-     * @var array
+     * @var array<\SixBySix\RealtimeDespatch\Entity\RMALine>
      */
-    protected $_lines;
+    protected array $_lines;
 
     /**
      * Return Reference.
-     *
      * @var string
      */
-    protected $_authorisation;
+    protected string $_authorisation;
 
     /**
      * Authorised Flag.
-     *
-     * @var string
+     * @var bool
      */
-    protected $_authorised;
+    protected bool $_authorised;
 
     /**
      * Return Type..
      *
      * @var string
      */
-    protected $_type;
+    protected string $_type;
 
     /**
      * Store Identifier.
      *
      * @var string
      */
-    protected $_storeId;
+    protected string $_storeId;
 
     /**
      * Return Date.
      *
      * @var string
      */
-    protected $_returnDate;
+    protected string $_returnDate;
 
     /**
      * Return Note.
-     *
-     * @var float
+     * @var string
      */
-    protected $_note;
+    protected string $_note;
 
     /**
      * Constructor.
-     *
      * @param string|null $authorisation
      */
     public function __construct(string $authorisation = null)
     {
         $this->_authorisation = $authorisation;
-        $this->_lines         = array();
+        $this->_lines         = [];
     }
 
     /**
      * Returns the current return lines.
      *
-     * @return array
+     * @return array<\SixBySix\RealtimeDespatch\Entity\RMALine>
      */
-    public function getLines()
+    public function getLines(): array
     {
         return $this->_lines;
     }
@@ -93,7 +89,7 @@ class RMA extends AbstractEntity
      *
      * @return RMA
      */
-    public function addLine(RMALine $line)
+    public function addLine(RMALine $line): RMA
     {
         $this->_lines[] = $line;
 
@@ -105,7 +101,7 @@ class RMA extends AbstractEntity
      *
      * @return string
      */
-    public function getExternalReference()
+    public function getExternalReference(): string
     {
         return $this->_externalReference;
     }
@@ -117,7 +113,7 @@ class RMA extends AbstractEntity
      *
      * @return RMA
      */
-    public function setExternalReference(string $externalReference)
+    public function setExternalReference(string $externalReference): RMA
     {
         $this->_externalReference = $externalReference;
 
@@ -129,7 +125,7 @@ class RMA extends AbstractEntity
      *
      * @return string
      */
-    public function getAuthorisation()
+    public function getAuthorisation(): string
     {
         return (string) $this->_authorisation;
     }
@@ -138,10 +134,9 @@ class RMA extends AbstractEntity
      * Authorisation Setter.
      *
      * @param string $authorisation
-     *
      * @return RMA
      */
-    public function setAuthorisation(string $authorisation)
+    public function setAuthorisation(string $authorisation): RMA
     {
         $this->_authorisation = $authorisation;
 
@@ -153,7 +148,7 @@ class RMA extends AbstractEntity
      *
      * @return bool
      */
-    public function getAuthorised()
+    public function getAuthorised(): bool
     {
         return (boolean) $this->_authorised;
     }
@@ -165,7 +160,7 @@ class RMA extends AbstractEntity
      *
      * @return RMA
      */
-    public function setAuthorised(bool $authorised)
+    public function setAuthorised(bool $authorised): RMA
     {
         $this->_authorised = (boolean) $authorised;
 
@@ -177,7 +172,7 @@ class RMA extends AbstractEntity
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->_type;
     }
@@ -186,10 +181,9 @@ class RMA extends AbstractEntity
      * Type Setter.
      *
      * @param string $type
-     *
      * @return RMA
      */
-    public function setType(string $type)
+    public function setType(string $type): RMA
     {
         $this->_type = $type;
 
@@ -201,7 +195,7 @@ class RMA extends AbstractEntity
      *
      * @return string
      */
-    public function getStoreId()
+    public function getStoreId(): string
     {
         return $this->_storeId;
     }
@@ -213,7 +207,7 @@ class RMA extends AbstractEntity
      *
      * @return RMA
      */
-    public function setStoreId(string $storeId)
+    public function setStoreId(string $storeId): RMA
     {
         $this->_storeId = $storeId;
 
@@ -225,7 +219,7 @@ class RMA extends AbstractEntity
      *
      * @return string
      */
-    public function getReturnDate()
+    public function getReturnDate(): string
     {
         return $this->_returnDate;
     }
@@ -237,7 +231,7 @@ class RMA extends AbstractEntity
      *
      * @return RMA
      */
-    public function setReturnDate(string $returnDate)
+    public function setReturnDate(string $returnDate): RMA
     {
         $this->_returnDate = $returnDate;
 
@@ -249,7 +243,7 @@ class RMA extends AbstractEntity
      *
      * @return string
      */
-    public function getNote()
+    public function getNote(): string
     {
         return (string) $this->_note;
     }
@@ -261,7 +255,7 @@ class RMA extends AbstractEntity
      *
      * @return RMA
      */
-    public function setNote(string $note)
+    public function setNote(string $note): RMA
     {
         $this->_note = $note;
 

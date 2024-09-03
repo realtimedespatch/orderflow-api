@@ -3,23 +3,27 @@
 namespace SixBySix\RealtimeDespatch\Document;
 
 use DOMDocument;
+use DOMElement;
 
 /**
  * Doc Builder Type.
  */
 abstract class DocBuilderType
 {
+    protected DOMDocument $_doc;
+    protected \DOMNode $_root;
+
     /**
      * Doc Params
      *
-     * @var array
+     * @var array<string,mixed>
      */
-    protected $_params;
+    protected array $_params;
 
     /**
      * Constructor.
      *
-     * @param array $params
+     * @param array<string,mixed> $params
      */
     public function __construct(array $params = array())
     {
@@ -31,5 +35,5 @@ abstract class DocBuilderType
      *
      * @return DOMDocument
      */
-    public abstract function build();
+    public abstract function build(): DOMDocument;
 }
