@@ -12,10 +12,9 @@ class InventoryService extends AbstractService
 {
     /**
      * Retrieves the current inventory.
-     *
      * @return InventoryLineCollection
      */
-    public function retrieveInventory()
+    public function retrieveInventory(): InventoryLineCollection
     {
         $response   = $this->_gateway->retrieveInventory();
         $collection = new InventoryLineCollection;

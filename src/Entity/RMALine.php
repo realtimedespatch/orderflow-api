@@ -12,42 +12,42 @@ class RMALine extends AbstractEntity
      *
      * @var integer
      */
-    protected $_quantity;
+    protected int $_quantity;
 
     /**
      * Return Reason..
      *
      * @var string
      */
-    protected $_reason;
+    protected string $_reason;
 
     /**
      * Return Condition.
      *
      * @var string
      */
-    protected $_condition;
+    protected string $_condition;
 
     /**
      * Return Product.
      *
      * @var string
      */
-    protected $_product;
+    protected string $_product;
 
     /**
      * Return Item.
      *
      * @var string
      */
-    protected $_returnItem = 'return';
+    protected string $_returnItem = 'return';
 
     /**
      * Quantity Getter.
      *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): int
     {
         return $this->_quantity;
     }
@@ -59,7 +59,7 @@ class RMALine extends AbstractEntity
      *
      * @return RMALine
      */
-    public function setQuantity(int $quantity)
+    public function setQuantity(int $quantity): RMALine
     {
         $this->_quantity = $quantity;
 
@@ -71,7 +71,7 @@ class RMALine extends AbstractEntity
      *
      * @return int
      */
-    public function getReason()
+    public function getReason(): int
     {
         return (integer) $this->_reason;
     }
@@ -83,7 +83,7 @@ class RMALine extends AbstractEntity
      *
      * @return RMALine
      */
-    public function setReason(string $reason)
+    public function setReason(string $reason): RMALine
     {
         $this->_reason = $reason;
 
@@ -95,7 +95,7 @@ class RMALine extends AbstractEntity
      *
      * @return int
      */
-    public function getCondition()
+    public function getCondition(): int
     {
         return (integer) $this->_condition;
     }
@@ -107,7 +107,7 @@ class RMALine extends AbstractEntity
      *
      * @return RMALine
      */
-    public function setCondition(string $condition)
+    public function setCondition(string $condition): RMALine
     {
         $this->_condition = $condition;
 
@@ -119,7 +119,7 @@ class RMALine extends AbstractEntity
      *
      * @return int
      */
-    public function getProduct()
+    public function getProduct(): int
     {
         return (integer) $this->_product;
     }
@@ -131,7 +131,7 @@ class RMALine extends AbstractEntity
      *
      * @return RMALine
      */
-    public function setProduct(string $product)
+    public function setProduct(string $product): RMALine
     {
         $this->_product = $product;
 

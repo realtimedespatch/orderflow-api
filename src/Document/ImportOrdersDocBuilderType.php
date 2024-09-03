@@ -5,6 +5,7 @@ namespace SixBySix\RealtimeDespatch\Document;
 use DOMDocument;
 use SixBySix\RealtimeDespatch\Entity\Address;
 use SixBySix\RealtimeDespatch\Entity\Order;
+use SixBySix\RealtimeDespatch\Entity\OrderLine;
 use SixBySix\RealtimeDespatch\Entity\Shipment;
 
 /**
@@ -16,7 +17,7 @@ class ImportOrdersDocBuilderType extends DocBuilderType
      * {@inheritdoc}
      * @throws \DOMException
      */
-    public function build()
+    public function build(): DOMDocument
     {
         $this->_doc  = new DOMDocument('1.0', 'UTF-8');
         $this->_root = $this->_doc->appendChild($this->_doc->createElement('imports'));
@@ -30,21 +31,17 @@ class ImportOrdersDocBuilderType extends DocBuilderType
 
     /**
      * Builds an individual import line.
-     *
      * @param Order $order
-     *
      * @return void
      * @throws \DOMException
-     * @throws \DOMException
-     * @throws \DOMException
      */
-    protected function _buildImport(Order $order)
+    protected function _buildImport(Order $order): void
     {
-        $import = $this->_root->appendChild($this->_doc->createElement('import'));
-
+        $import = $this->_doc->createElement('import');
         $import->setAttribute('type', 'order');
         $import->setAttribute('operation', 'insert');
         $import->setAttribute('externalReference', $order->getExternalReference());
+        $this->_root->appendChild($import);
 
         $content = $this->_buildParams($order->toArray(true));
         $content .= $this->_buildAddress($order->getDeliveryAddress(), 'delivery');
@@ -58,11 +55,10 @@ class ImportOrdersDocBuilderType extends DocBuilderType
     /**
      * Builds the order params.
      *
-     * @param array $params
-     *
+     * @param array<string,mixed> $params
      * @return string
      */
-    protected function _buildParams(array $params)
+    protected function _buildParams(array $params): string
     {
         $content = '';
 
@@ -80,12 +76,11 @@ class ImportOrdersDocBuilderType extends DocBuilderType
     /**
      * Builds an order address
      *
-     * @param SixBySix\RealtimeDespatch\Entity\Address $address
+     * @param Address $address
      * @param string $type
-     *
      * @return string
      */
-    protected function _buildAddress(Address $address, string $type)
+    protected function _buildAddress(Address $address, string $type): string
     {
         $address->collapse();
         $content = '';
@@ -100,11 +95,10 @@ class ImportOrdersDocBuilderType extends DocBuilderType
     /**
      * Builds the order lines.
      *
-     * @param array $orderLines
-     *
+     * @param array<int,OrderLine> $orderLines
      * @return string
      */
-    protected function _buildOrderLines(array $orderLines)
+    protected function _buildOrderLines(array $orderLines): string
     {
         $content = '';
 
@@ -123,11 +117,10 @@ class ImportOrdersDocBuilderType extends DocBuilderType
     /**
      * Builds an order address
      *
-     * @param Shipment $address
-     *
+     * @param Shipment $shipment
      * @return string
      */
-    protected function _buildShipment(Shipment $shipment)
+    protected function _buildShipment(Shipment $shipment): string
     {
         $content = '';
 

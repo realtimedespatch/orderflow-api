@@ -9,10 +9,9 @@ class ImportReport
 {
     /**
      * Lines.
-     *
-     * @var ImportReportLine $lines
+     * @var array<ImportReportLine>
      */
-    protected $_lines;
+    protected array $_lines;
 
     /**
      * Constructor.
@@ -25,9 +24,9 @@ class ImportReport
     /**
      * Returns the current report lines.
      *
-     * @return array
+     * @return array<ImportReportLine>
      */
-    public function getLines()
+    public function getLines(): array
     {
         return $this->_lines;
     }
@@ -36,13 +35,11 @@ class ImportReport
      * Adds a new line to the report.
      *
      * @param ImportReportLine $line
-     *
      * @return ImportReport
      */
-    public function addLine(ImportReportLine $line)
+    public function addLine(ImportReportLine $line): ImportReport
     {
         $this->_lines[] = $line;
-
         return $this;
     }
 
@@ -51,9 +48,9 @@ class ImportReport
      *
      * @return boolean
      */
-    public function isSuccess()
+    public function isSuccess(): bool
     {
-        return ! $this->hasErrors() && ! $this->hasDuplicates();
+        return ! $this->hasFailures() && ! $this->hasDuplicates();
     }
 
     /**
@@ -61,25 +58,22 @@ class ImportReport
      *
      * @return integer
      */
-    public function getNumberOfSuccesses()
+    public function getNumberOfSuccesses(): int
     {
         $count = 0;
-
         foreach ($this->_lines as $line) {
             if ($line->isSuccess()) {
                 $count += 1;
             }
         }
-
         return $count;
     }
 
     /**
      * Returns the number of successes.
-     *
      * @return integer
      */
-    public function getNumberOfUniqueSuccesses()
+    public function getNumberOfUniqueSuccesses(): int
     {
         $ids   = array();
         $count = 0;
@@ -96,20 +90,18 @@ class ImportReport
 
     /**
      * Checks whether the import contained failures.
-     *
      * @return boolean
      */
-    public function hasFailures()
+    public function hasFailures(): bool
     {
         return $this->getNumberOfFailures() > 0;
     }
 
     /**
      * Returns the number of failures.
-     *
      * @return integer
      */
-    public function getNumberOfFailures()
+    public function getNumberOfFailures(): int
     {
         $count = 0;
 
@@ -124,20 +116,18 @@ class ImportReport
 
     /**
      * Checks whether the import contained duplicates.
-     *
      * @return boolean
      */
-    public function hasDuplicates()
+    public function hasDuplicates(): bool
     {
         return $this->getNumberOfDuplicates() > 0;
     }
 
     /**
      * Returns the number of duplicates.
-     *
      * @return integer
      */
-    public function getNumberOfDuplicates()
+    public function getNumberOfDuplicates(): int
     {
         $count = 0;
 
@@ -152,13 +142,12 @@ class ImportReport
 
     /**
      * Returns the import type.
-     *
-     * @return string
+     * @return string|null
      */
-    public function getImportType()
+    public function getImportType(): ?string
     {
         if ( ! isset($this->_lines[0])) {
-            return;
+            return null;
         }
 
         return ucwords($this->_lines[0]->getOperation());
@@ -166,13 +155,12 @@ class ImportReport
 
     /**
      * Returns the entity type of the import.
-     *
-     * @return string
+     * @return string|null
      */
-    public function getEntityType()
+    public function getEntityType(): ?string
     {
         if ( ! isset($this->_lines[0])) {
-            return;
+            return null;
         }
 
         return ucwords($this->_lines[0]->getType());

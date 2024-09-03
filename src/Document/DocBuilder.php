@@ -14,7 +14,7 @@ class DocBuilder
     *
     * @var DocBuilderType
     */
-    protected $_type;
+    protected DocBuilderType $_type;
 
     /**
      * Constructor.
@@ -31,7 +31,7 @@ class DocBuilder
      *
      * @return DOMDocument
      */
-    public function build()
+    public function build(): DOMDocument
     {
         return $this->_type->build();
     }

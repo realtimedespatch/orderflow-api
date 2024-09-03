@@ -14,7 +14,7 @@ class MergeProductsDocBuilderType extends DocBuilderType
      * {@inheritdoc}
      * @throws \DOMException
      */
-    public function build()
+    public function build(): DOMDocument
     {
         $this->_doc   = new DOMDocument('1.0', 'UTF-8');
         $this->_root  = $this->_doc->appendChild($this->_doc->createElement('imports'));
@@ -33,16 +33,14 @@ class MergeProductsDocBuilderType extends DocBuilderType
      *
      * @return void
      * @throws \DOMException
-     * @throws \DOMException
-     * @throws \DOMException
      */
-    protected function _buildMerge(Product $product)
+    protected function _buildMerge(Product $product): void
     {
-        $import = $this->_root->appendChild($this->_doc->createElement('import'));
-
+        $import = $this->_doc->createElement('import');
         $import->setAttribute('type', 'product');
         $import->setAttribute('operation', 'merge');
         $import->setAttribute('externalReference', $product->getExternalReference());
+        $this->_root->appendChild($import);
 
         $content = "";
 

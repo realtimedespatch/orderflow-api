@@ -17,13 +17,10 @@ class ProductService extends AbstractService
      * Notifies OrderFlow of a created product.
      *
      * @param string $sku
-     *
      * @return SimpleXMLElement
      * @throws Exception
-     * @throws Exception
-     * @throws Exception
      */
-    public function notifyProductCreation(string $sku)
+    public function notifyProductCreation(string $sku): SimpleXMLElement
     {
         $response = $this->_gateway->productNotification($sku, 'created');
 
@@ -38,13 +35,10 @@ class ProductService extends AbstractService
      * Notifies OrderFlow of a product update.
      *
      * @param string $sku
-     *
      * @return SimpleXMLElement
      * @throws Exception
-     * @throws Exception
-     * @throws Exception
      */
-    public function notifyProductUpdate(string $sku)
+    public function notifyProductUpdate(string $sku): SimpleXMLElement
     {
         $response = $this->_gateway->productNotification($sku, 'modified');
 
@@ -57,12 +51,11 @@ class ProductService extends AbstractService
 
     /**
      * Updates a single existing product with RTD.
-     *
      * @param Product $product
-     *
      * @return ImportReport
+     * @throws Exception
      */
-    public function updateProduct(Product $product)
+    public function updateProduct(Product $product): ImportReport
     {
         $products = new ProductCollection;
         $products[] = $product;
@@ -74,12 +67,12 @@ class ProductService extends AbstractService
      * Updates a collection of products with RTD.
      *
      * @param ProductCollection $products
-     *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportFactor
+     * @return ImportReport
+     * @throws Exception
      */
-    public function updateProducts(ProductCollection $products)
+    public function updateProducts(ProductCollection $products): ImportReport
     {
-        $xml = $this->_getDocumentBuilder()->buildProductUpdate(
+        $xml = (string) $this->_getDocumentBuilder()->buildProductUpdate(
             array('products' => $products)
         )->saveXml();
 
@@ -90,10 +83,10 @@ class ProductService extends AbstractService
      * Imports a single product to RTD.
      *
      * @param Product $product
-     *
      * @return ImportReport
+     * @throws Exception
      */
-    public function importProduct(Product $product)
+    public function importProduct(Product $product): ImportReport
     {
         $products = new ProductCollection;
         $products[] = $product;
@@ -105,12 +98,12 @@ class ProductService extends AbstractService
      * Imports a collection of products to RTD.
      *
      * @param ProductCollection $products
-     *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportFactor
+     * @return ImportReport
+     * @throws Exception
      */
-    public function importProducts(ProductCollection $products)
+    public function importProducts(ProductCollection $products): ImportReport
     {
-        $xml = $this->_getDocumentBuilder()->buildProductImport(
+        $xml = (string) $this->_getDocumentBuilder()->buildProductImport(
             array('products' => $products)
         )->saveXml();
 
@@ -121,10 +114,10 @@ class ProductService extends AbstractService
      * Merges a single product.
      *
      * @param Product $product
-     *
      * @return ImportReport
+     * @throws Exception
      */
-    public function mergeProduct(Product $product)
+    public function mergeProduct(Product $product): ImportReport
     {
         $products = new ProductCollection;
         $products[] = $product;
@@ -136,12 +129,12 @@ class ProductService extends AbstractService
      * Merges a collection of products to RTD.
      *
      * @param ProductCollection $products
-     *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportFactor
+     * @return ImportReport
+     * @throws Exception
      */
-    public function mergeProducts(ProductCollection $products)
+    public function mergeProducts(ProductCollection $products): ImportReport
     {
-        $xml = $this->_getDocumentBuilder()->buildProductMerge(
+        $xml = (string) $this->_getDocumentBuilder()->buildProductMerge(
             array('products' => $products)
         )->saveXml();
 

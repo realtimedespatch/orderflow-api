@@ -13,16 +13,17 @@ abstract class AbstractEntity
     /**
      * Custom parameters.
      *
-     * @var array
+     * @var array<string,mixed>
      */
-    private $_customParams = array();
+    private array $_customParams = [];
 
     /**
      * Gets a parameter value.
      *
      * @return mixed
+     * @param string $key
      */
-    public function getParam($key)
+    public function getParam(string $key): mixed
     {
         $value = null;
 
@@ -38,10 +39,11 @@ abstract class AbstractEntity
 
     /**
      * Sets a parameter value.
-     *
+     * @param string $key
+     * @param mixed $value
      * @return AbstractEntity
      */
-    public function setParam($key, $value)
+    public function setParam(string $key, mixed $value): AbstractEntity
     {
         if (method_exists(get_class($this), 'set'.ucfirst($key))) {
             $this->{'set'.ucfirst($key)}($value);
@@ -60,10 +62,9 @@ abstract class AbstractEntity
      * Returns the entity as an array.
      *
      * @param boolean $hideNull
-     *
-     * @return array
+     * @return array<string,mixed>
      */
-    public function toArray(bool $hideNull = false)
+    public function toArray(bool $hideNull = false): array
     {
         $reflect = new ReflectionClass($this);
         $props   = $reflect->getProperties(ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED);

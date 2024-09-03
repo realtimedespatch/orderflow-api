@@ -10,7 +10,7 @@ class InvoiceAddress extends Address
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'invoice';
     }

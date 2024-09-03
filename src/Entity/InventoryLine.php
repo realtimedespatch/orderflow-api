@@ -12,49 +12,46 @@ class InventoryLine extends AbstractEntity
      *
      * @var string
      */
-    protected $_externalReference;
+    protected string $_externalReference;
 
     /**
      * Site.
      *
      * @var string
      */
-    protected $_site;
+    protected string $_site;
 
     /**
      * Total allocated units.
-     *
-     * @var string
+     * @var int
      */
-    protected $_total;
+    protected int $_total;
 
     /**
      * Number of allocated units.
-     *
-     * @var string
+     * @var int
      */
-    protected $_allocated;
+    protected int $_allocated;
 
     /**
      * Is the item available?
-     *
-     * @var string
+
+     * @var bool
      */
-    protected $_isAvailable;
+    protected bool $_isAvailable;
 
     /**
      * Is the item frozen?
-     *
-     * @var string
+     * @var bool
      */
-    protected $_isFrozen;
+    protected bool $_isFrozen;
 
     /**
      * External Reference Getter.
      *
      * @return string
      */
-    public function getExternalReference()
+    public function getExternalReference(): string
     {
         return $this->_externalReference;
     }
@@ -66,7 +63,7 @@ class InventoryLine extends AbstractEntity
      *
      * @return InventoryLine
      */
-    public function setExternalReference(string $externalReference)
+    public function setExternalReference(string $externalReference): InventoryLine
     {
         $this->_externalReference = $externalReference;
 
@@ -78,7 +75,7 @@ class InventoryLine extends AbstractEntity
      *
      * @return string
      */
-    public function getSite()
+    public function getSite(): string
     {
         return $this->_site;
     }
@@ -90,7 +87,7 @@ class InventoryLine extends AbstractEntity
      *
      * @return InventoryLine
      */
-    public function setSite(string $site)
+    public function setSite(string $site): InventoryLine
     {
         $this->_site = $site;
 
@@ -102,7 +99,7 @@ class InventoryLine extends AbstractEntity
      *
      * @return integer
      */
-    public function getTotal()
+    public function getTotal(): int
     {
         return (integer) $this->_total;
     }
@@ -114,7 +111,7 @@ class InventoryLine extends AbstractEntity
      *
      * @return InventoryLine
      */
-    public function setTotal(int $total)
+    public function setTotal(int $total): InventoryLine
     {
         $this->_total = $total;
 
@@ -126,7 +123,7 @@ class InventoryLine extends AbstractEntity
      *
      * @return integer
      */
-    public function getAllocated()
+    public function getAllocated(): int
     {
         return (integer) $this->_allocated;
     }
@@ -138,7 +135,7 @@ class InventoryLine extends AbstractEntity
      *
      * @return InventoryLine
      */
-    public function setAllocated(int $allocated)
+    public function setAllocated(int $allocated): InventoryLine
     {
         $this->_allocated = $allocated;
 
@@ -150,7 +147,7 @@ class InventoryLine extends AbstractEntity
      *
      * @return boolean
      */
-    public function isAvailable()
+    public function isAvailable(): bool
     {
         return (boolean) $this->_isAvailable;
     }
@@ -162,7 +159,7 @@ class InventoryLine extends AbstractEntity
      *
      * @return InventoryLine
      */
-    public function setIsAvailable(bool $isAvailable)
+    public function setIsAvailable(bool $isAvailable): InventoryLine
     {
         $this->_isAvailable = (boolean) $isAvailable;
 
@@ -174,7 +171,7 @@ class InventoryLine extends AbstractEntity
      *
      * @return boolean
      */
-    public function isFrozen()
+    public function isFrozen(): bool
     {
         return (boolean) $this->_isFrozen;
     }
@@ -182,11 +179,11 @@ class InventoryLine extends AbstractEntity
     /**
      * Is Frozen Setter.
      *
-     * @param boolean $isAvailable
+     * @param boolean $isFrozen
      *
      * @return InventoryLine
      */
-    public function setIsFrozen($isFrozen)
+    public function setIsFrozen(bool $isFrozen): InventoryLine
     {
         $this->_isFrozen = (boolean) $isFrozen;
 

@@ -15,10 +15,9 @@ class ImportReportFactory
      * Creates a new gateway instance
      *
      * @param SimpleXMLElement $response
-     *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReport
+     * @return ImportReport
      */
-    public function createFromResponse(SimpleXMLElement $response)
+    public function createFromResponse(SimpleXMLElement $response): ImportReport
     {
         $report = new ImportReport;
 
@@ -51,10 +50,9 @@ class ImportReportFactory
      * Creates a new import report line.
      *
      * @param mixed $lineData
-     *
-     * @return \SixBySix\RealtimeDespatch\Report\ImportReportLine
+     * @return ImportReportLine
      */
-    protected function _createLine(mixed $lineData)
+    protected function _createLine(mixed $lineData): ImportReportLine
     {
         $reportLine = new ImportReportLine;
 
