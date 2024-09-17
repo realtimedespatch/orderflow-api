@@ -233,7 +233,7 @@ class DefaultGateway
      */
     public function retrieveOrderDetails(string $externalReference): SimpleXMLElement
     {
-        $this->_client->post(
+        $this->_client->get(
             $this->_createUrl(
                 self::API_ENDPOINT_ORDER_DETAIL,
                 [
